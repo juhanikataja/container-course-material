@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1920"
+   height="1080"
+   viewBox="0 0 1920.0001 1080"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="vm_vs_container.svg"
+   inkscape:export-filename="/home/rlaurika/src/reveal.js/reveal.js/img/vm_vs_container.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4397"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4399" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.66245342"
+     inkscape:cx="728.80718"
+     inkscape:cy="602.01075"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1341"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     showborder="true"
+     inkscape:showpageshadow="false"
+     units="px">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5017" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,27.637779)">
+    <g
+       id="g4964"
+       transform="matrix(1.5313664,0,0,1.5310941,58.345573,-538.79519)">
+      <rect
+         y="839.81445"
+         x="18.036028"
+         height="108.59624"
+         width="522.19611"
+         id="rect4136"
+         style="fill:#27b7da;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+      <rect
+         y="721.33722"
+         x="18.036028"
+         height="108.59624"
+         width="522.19611"
+         id="rect4136-7"
+         style="fill:#33f8fd;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         transform="scale(0.9322689,1.0726519)"
+         sodipodi:linespacing="125%"
+         id="text4279"
+         y="847.99335"
+         x="236.43306"
+         style="font-style:normal;font-weight:normal;font-size:49.57313156px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40.00000381px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="847.99335"
+           x="236.43306"
+           id="tspan4281"
+           sodipodi:role="line">Kernel</tspan></text>
+      <text
+         transform="scale(0.9322689,1.0726519)"
+         sodipodi:linespacing="125%"
+         id="text4283"
+         y="733.42072"
+         x="196.07118"
+         style="font-style:normal;font-weight:normal;font-size:49.57313156px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40.00000381px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="733.42072"
+           x="196.07118"
+           id="tspan4285"
+           sodipodi:role="line">Hypervisor</tspan></text>
+      <g
+         transform="translate(-102.36045,330.55556)"
+         id="g4403">
+        <rect
+           style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:2.61227846;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4365"
+           width="254.62962"
+           height="321.2963"
+           x="387.96295"
+           y="57.917763" />
+        <g
+           id="g4345"
+           transform="translate(43.518519,-22.222222)">
+          <g
+             id="g4303">
+            <rect
+               style="fill:#27b7da;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect4153-2-2"
+               width="224.90875"
+               height="80.58165"
+               x="358.84192"
+               y="300.96027" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               x="408.30801"
+               y="356.16321"
+               id="text4291"
+               sodipodi:linespacing="125%"><tspan
+                 style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+                 sodipodi:role="line"
+                 id="tspan4293"
+                 x="408.30801"
+                 y="356.16321">Kernel</tspan></text>
+          </g>
+          <g
+             id="g4318">
+            <rect
+               style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect4153-0"
+               width="224.90875"
+               height="142.61868"
+               x="358.84192"
+               y="146.79361" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               x="422.63419"
+               y="228.52287"
+               id="text4299"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan4301"
+                 x="422.63419"
+                 y="228.52287">Apps</tspan></text>
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="482.72464"
+           y="106.99184"
+           id="text4367"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4369"
+             x="482.72464"
+             y="106.99184"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start">VM</tspan></text>
+      </g>
+      <g
+         id="g4403-9"
+         transform="translate(-369.92693,331.01852)">
+        <rect
+           style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:2.61227846;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4365-2"
+           width="254.62962"
+           height="321.2963"
+           x="387.96295"
+           y="57.917763" />
+        <g
+           id="g4345-5"
+           transform="translate(43.518519,-22.222222)">
+          <g
+             id="g4303-3">
+            <rect
+               style="fill:#27b7da;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect4153-2-2-9"
+               width="224.90875"
+               height="80.58165"
+               x="358.84192"
+               y="300.96027" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               x="408.30801"
+               y="356.16321"
+               id="text4291-5"
+               sodipodi:linespacing="125%"><tspan
+                 style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+                 sodipodi:role="line"
+                 id="tspan4293-6"
+                 x="408.30801"
+                 y="356.16321">Kernel</tspan></text>
+          </g>
+          <g
+             id="g4318-0">
+            <rect
+               style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:2.6122787;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+               id="rect4153-0-1"
+               width="224.90875"
+               height="142.61868"
+               x="358.84192"
+               y="146.79361" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+               x="422.63419"
+               y="228.52287"
+               id="text4299-7"
+               sodipodi:linespacing="125%"><tspan
+                 sodipodi:role="line"
+                 id="tspan4301-8"
+                 x="422.63419"
+                 y="228.52287">Apps</tspan></text>
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="482.72464"
+           y="106.99184"
+           id="text4367-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4369-8"
+             x="482.72464"
+             y="106.99184"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start">VM</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g4940"
+       transform="matrix(1.5266291,0,0,1.5273528,195.84445,-718.90355)">
+      <g
+         id="g5282"
+         transform="translate(304.73416,123.67832)">
+        <rect
+           style="fill:#27b7da;fill-opacity:1;stroke:#000000;stroke-width:2.61953068;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect4136-2"
+           width="521.68835"
+           height="108.59624"
+           x="249.23648"
+           y="716.95447" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:49.57313156px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="484.15836"
+           y="733.45477"
+           id="text4279-0"
+           sodipodi:linespacing="125%"
+           transform="scale(0.9322689,1.0726519)"><tspan
+             sodipodi:role="line"
+             id="tspan4281-0"
+             x="484.15836"
+             y="733.45477"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40.00000381px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start">Kernel</tspan></text>
+      </g>
+      <g
+         transform="translate(320.8632,123.67832)"
+         id="g5206">
+        <g
+           id="g5201">
+          <rect
+             y="383.66891"
+             x="233.10744"
+             height="321.2963"
+             width="254.62962"
+             id="rect4365-2-8"
+             style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:2.61953092;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4367-2-3"
+             y="431.93655"
+             x="266.72067"
+             style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+               y="431.93655"
+               x="266.72067"
+               id="tspan4369-8-4"
+               sodipodi:role="line">Container</tspan></text>
+        </g>
+        <g
+           id="g5188"
+           transform="translate(0.46294403,4.0322581)">
+          <rect
+             y="450.32254"
+             x="247.50493"
+             height="232.94127"
+             width="224.90875"
+             id="rect4153-0-1-0"
+             style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:2.61953115;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4299-9"
+             y="577.47314"
+             x="314.27744"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               y="577.47314"
+               x="314.27744"
+               id="tspan4301-8-8"
+               sodipodi:role="line">Apps</tspan></text>
+        </g>
+      </g>
+      <g
+         id="g5206-2"
+         transform="translate(587.92191,123.67832)">
+        <g
+           id="g5201-7">
+          <rect
+             y="383.66891"
+             x="233.10744"
+             height="321.2963"
+             width="254.62962"
+             id="rect4365-2-0"
+             style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:2.61953092;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4367-2-9"
+             y="431.93655"
+             x="266.72067"
+             style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+               y="431.93655"
+               x="266.72067"
+               id="tspan4369-8-7"
+               sodipodi:role="line">Container</tspan></text>
+        </g>
+        <g
+           id="g5188-4"
+           transform="translate(0.46294403,4.0322581)">
+          <rect
+             y="450.32254"
+             x="247.50493"
+             height="232.94127"
+             width="224.90875"
+             id="rect4153-0-1-7"
+             style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:2.61953115;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4299-9-4"
+             y="577.47314"
+             x="314.27744"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               y="577.47314"
+               x="314.27744"
+               id="tspan4301-8-7"
+               sodipodi:role="line">Apps</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
