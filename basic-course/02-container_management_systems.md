@@ -1,0 +1,125 @@
+# Container management systems
+
+---
+
+## Docker Swarm
+
+- from Docker Inc.
+- takes care of scheduling containers on multiple hosts
+- same API as Docker engine -> same tools
+- https://docs.docker.com/engine/swarm/
+- k8s support in beta
+
+---
+
+## Kubernetes (K8s)
+
+- from Cloud Native Computing Foundation (CNCF)
+- originally developed by Google, donated 2015
+- now developed by Google, RedHat, CoreOS, ...
+- open source, one of the biggest and most active projects in
+  GitHub  
+- Google Container Engine (GKE) implements K8s API
+- some notable workloads
+  - GitHub frontend
+  - Pokémon Go
+
+- https://kubernetes.io/
+
+---
+
+## OpenShift
+
+- from RedHat
+- based on Kubernetes
+- batteries included
+    - application templates
+    - fairly complete Web UI
+    - CD/CI
+- community supported and commercial versions available
+
+---
+
+![](img/OpenShift_logo.png)
+
+---
+
+![](img/Kubernetes_logo.png)
+
+---
+
+![](img/Picard_as_Locutus.jpg)
+(image source: Wikipedia, under fair use)
+
+---
+
+TODO: OpenShift->K8s->Borg
+
+## OpenShift platform development model
+
+- based on a stable K8s version, a few releases behind from bleeding edge
+- ahead of K8s in some areas
+  - security, multitenancy
+- RH contributes to upsteam K8s releases, then
+  later switches to using upstream features in OpenShift
+- target: make K8s more extensible, so that
+  OpenShift can run as plugins
+  (source: OpenShift commons briefing for K8s 1.8)
+
+---
+
+## Motivation: SEP
+
+- why container orchestration system instead of XYZ
+
+---
+
+## Somebody Else's Problem
+
+- network isolation - SEP
+- container and project isolation - SEP
+- process keepalive - SEP
+- capacity management - SEP
+- CD/CI orchestration - SEP
+- service location - SEP
+- HA load balancing - SEP
+- storage - SEP
+- DNS name for the application - SEP
+- server certificates - SEP
+- authorization for delegating management rights - SEP
+
+## Services and other useful stuff (with demos)
+
+- application templates
+- Docker registry
+  - accessible from outside
+- WebUI for Docker registry
+- container resource usage monitoring
+  - CPU, memory, network
+- terminal access to running containers 
+  - no host login required 
+- centralized logging (if installed)
+
+---
+
+## Security in OpenShift
+
+- isolation: based on Linux kernel
+- (ClearContainers: KVM)
+- SELinux contexts per project
+- User ID per project
+  - taken from high range
+  - no overlaps
+- no user namespaces yet, thus no (local) root in containers
+- network: SDN per project
+- storage: SELinux labelling
+
+---
+
+## Security in OpenShift (contd.)
+
+- infra nodes (masters, etcd, lb, glusterfs) do not run user processes 
+- user nodes have limited access to infra
+- masters are only ones that talk to etcd (state)
+- more isolation than a compute cluster
+- less isolation than VMs
