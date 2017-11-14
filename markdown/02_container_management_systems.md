@@ -38,18 +38,20 @@
     - CD/CI
 - community supported and commercial versions available
 
----
-
-![](img/OpenShift_logo.png)
+## Standing on the shoulders of giants
 
 ---
 
-![](img/Kubernetes_logo.png)
+<!-- .slide: data-background="img/openshift_logo.png" -->
 
 ---
 
-![](img/Picard_as_Locutus.jpg)
-(image source: Wikipedia, under fair use)
+<!-- .slide: data-background="img/kubernetes_logo.png" -->
+
+---
+
+<!-- .slide: data-background="img/picard_as_locutus.jpg" -->
+<!-- (image source: Wikipedia, under fair use) -->
 
 ---
 
