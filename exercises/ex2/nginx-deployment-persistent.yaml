@@ -1,17 +1,12 @@
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: nginx-deployment
 spec:
-  replicas: 2
   template:
-    metadata:
-      labels:
-        app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.11.13
-        ports:
-        - containerPort: 80
+        - name: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: web-content-volume
+      volumes:
+        - name: web-content-volume
+          persistentVolumeClaim:
+            claimName: web-content-pvc
