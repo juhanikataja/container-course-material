@@ -1,0 +1,88 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  name: nginx-site
+  annotations:
+    description: "Creates a really simple NGINX site for serving static HTML."
+    tags: "tutorial,nginx"
+    iconClass: "icon-nginx"
+objects:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: web-content-pvc
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: ${NGINX_VOL_SIZE}
+      storageClassName: ${NGINX_VOL_STORAGE_CLASS}
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: nginx-deployment
+    spec:
+      replicas: ${NGINX_REPLICAS}
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          containers:
+          - name: nginx
+            image: ${NGINX_IMAGE}
+            volumeMounts:
+              - mountPath: /usr/share/nginx/html
+                name: web-content-volume
+            ports:
+              - name: nginx-port
+                containerPort: 8080
+          volumes:
+            - name: web-content-volume
+              persistentVolumeClaim:
+                claimName: web-content-pvc
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: nginx-service
+    spec:
+      selector:
+        app: nginx
+      ports:
+        - protocol: TCP
+          port: 80
+          targetPort: nginx-port
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: nginx-route
+    spec:
+      to:
+        kind: Service
+        name: nginx-service
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+parameters:
+  - name: "NGINX_VOL_SIZE"
+    displayName: "NGINX volume size"
+    description: "How much space in Gi to allocate for the shared NGINX volume."
+    value: "1Gi"
+    required: true
+  - name: "NGINX_VOL_STORAGE_CLASS"
+    displayName: "NGINX volume storage class"
+    description: >
+      "The name of a volume class that supports the ReadWriteMany access mode."
+    value: "glusterfs-storage"
+    required: true
+  - name: "NGINX_REPLICAS"
+    displayName: "NGINX replica count"
+    description: "How many NGINX pods should be created."
+    value: "2"
+    required: true
+  - name: "NGINX_IMAGE"
+    displayName: "NGINX image"
+    description: "What NGINX image to use."
+    required: true
