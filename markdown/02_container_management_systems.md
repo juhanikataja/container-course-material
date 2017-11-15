@@ -10,6 +10,8 @@
 - [Swarm documentation](https://docs.docker.com/engine/swarm/)
 - k8s support in beta
 
+Note:
+
 (TODO: rephrase and clarify Docker/Swarm/K8s relation/support)
 
 ---
@@ -27,6 +29,8 @@
   - Pokémon Go
 
 - [https://kubernetes.io/](https://kubernetes.io/)
+
+Note:
 
 (TODO: add picture from CNCF showing K8s contribution activity)
 
@@ -69,6 +73,9 @@
 - target: make K8s more extensible, so that
   OpenShift can run as plugins
   (source: OpenShift commons briefing for K8s 1.8)
+
+Note:
+
 (TODO: find specific link for briefing)
 
 ---
@@ -118,6 +125,10 @@
 - no user namespaces yet, thus no (local) root in containers
 - network: SDN per project
 - storage: SELinux labelling
+
+Note:
+
+TODO: add SCC model
 
 ---
 
