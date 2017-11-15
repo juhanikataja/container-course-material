@@ -1,4 +1,34 @@
- # Terminology
+# Terminology
+
+---
+
+## K8s architecture
+* master-slave model
+* state in etcd (usually clustered)
+
+---
+
+## K8s principles
+
+"A controller is a reconciliation loop that drives actual cluster state toward the desired cluster state"
+
+Source: wikipedia
+
+---
+
+## K8s principles
+
+* controllers
+* target state
+* current state
+* actions
+---
+
+## How does our OpenShift deployment look like
+
+---
+
+![Openshift deployment](img/openshift_deployment.png)
 
 ---
 
@@ -29,12 +59,49 @@ A collection of one or more containers and volumes with a common IP.
 ![Pods](img/pods.png "Pods")
 
 ---
+### Pod
 
-## Persistent volume
+* smallest unit to schedule
+* has resource limits
+  * memory
+  * CPU
+* subject to readiness and health checks (per container)
+
+---
+
+## Storage (persistent volumes, claims, model)
 
 A **PersistentVolume** stores state. Claimed via **PersistentVolumeClaim**.
 
 ![PersistentVolumeClaim](img/persistentvolumeclaim.png "PersistentVolumeClaim")
+
+---
+
+## Persistent volume
+* Global object (lives outside namespaces)
+* Can be created by administrators
+* Can be created dynamically by Dynamic Volume Provisioning
+* Obtained by user by creating a PersistentVolumeClaim  
+
+---
+
+## Persistent volume claim
+* Created in project namespace
+* properties
+  * size
+  * access mode (ReadOnly, ReadWriteOnce, ReadWriteMany)
+  * storage class
+* StorageClass -objects provide a way to select PV properties
+  * backed by SSD, backed by spinning rust, mirrored, erasure coded,...
+
+---
+
+### Persistence model
+
+* Pods can use scratch space local to the node it is running on
+* **Any data that should persist has to be written to a volume**
+* System is free to delete and respawn Pods
+* Volume follows Pod when it is rescheduled to a different host
 
 ---
 
@@ -59,6 +126,25 @@ Ensure *n* copies of a pod are running.
 Manages rolling updates.
 
 ![Deployment](img/deployment.png "Deployment")
+
+---
+
+### Route/Ingress
+
+* Provides a way to access Services externally
+* Implemented by HAProxy pods ("Routers") in OpenShift
+* Maps traffic for a given DNS name to a set of Pods backing a Service
+* Optionally terminates SSL
+
+---
+
+### Namespace/Project
+
+* User objects live in their namespaces/projects
+* Services are accessible to Pods in the same namespace
+* Users can have different roles/rights (globally or locally to the namespace)
+  * admin, self-provisioner, basic-user, cluster-reader   
+* admin of a namespace (=You!) can add others as collaborators
 
 ---
 
