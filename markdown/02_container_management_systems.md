@@ -7,8 +7,10 @@
 - from Docker Inc.
 - takes care of scheduling containers on multiple hosts
 - same API as Docker engine -> same tools
-- https://docs.docker.com/engine/swarm/
+- [Swarm documentation](https://docs.docker.com/engine/swarm/)
 - k8s support in beta
+
+(TODO: rephrase and clarify Docker/Swarm/K8s relation/support)
 
 ---
 
@@ -24,7 +26,9 @@
   - GitHub frontend
   - Pokémon Go
 
-- https://kubernetes.io/
+- [https://kubernetes.io/](https://kubernetes.io/)
+
+(TODO: add picture from CNCF showing K8s contribution activity)
 
 ---
 
@@ -55,8 +59,6 @@
 
 ---
 
-TODO: OpenShift->K8s->Borg
-
 ## OpenShift platform development model
 
 - based on a stable K8s version, a few releases behind from bleeding edge
@@ -67,6 +69,7 @@ TODO: OpenShift->K8s->Borg
 - target: make K8s more extensible, so that
   OpenShift can run as plugins
   (source: OpenShift commons briefing for K8s 1.8)
+(TODO: find specific link for briefing)
 
 ---
 
@@ -82,7 +85,7 @@ TODO: OpenShift->K8s->Borg
 - container and project isolation - SEP
 - process keepalive - SEP
 - capacity management - SEP
-- CD/CI orchestration - SEP
+- CI/CD orchestration - SEP
 - service location - SEP
 - HA load balancing - SEP
 - storage - SEP
