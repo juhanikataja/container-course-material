@@ -139,8 +139,6 @@ Note:
 - network: SDN per project
 - storage: SELinux labeling (for supported storage types)
 
-- storage: SELinux labelling
-
 Note:
 
 TODO: add SCC model
