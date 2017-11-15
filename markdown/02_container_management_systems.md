@@ -46,7 +46,9 @@ Note:
     - CD/CI
 - community supported and commercial versions available
 
-## Standing on the shoulders of giants
+---
+
+# Standing on the shoulders of giants
 
 ---
 
@@ -100,6 +102,8 @@ Note:
 - server certificates - SEP
 - authorization for delegating management rights - SEP
 
+---
+
 ## Services and other useful stuff (with demos)
 
 - application templates
@@ -110,11 +114,19 @@ Note:
   - CPU, memory, network
 - terminal access to running containers 
   - no host login required 
-- centralized logging (if installed)
+- centralized logging
 
 ---
 
-## Security in OpenShift
+## Security in OpenShift - infrastructure
+
+- infra nodes (masters, etcd, lb, glusterfs) do not run user processes 
+- user nodes have limited access to infra
+- masters are only ones that talk to etcd (state)
+
+---
+
+## Security in OpenShift - containers
 
 - isolation: based on Linux kernel
 - (ClearContainers: KVM)
@@ -122,9 +134,10 @@ Note:
 - User ID per project
   - taken from high range
   - no overlaps
+- extra process capabilities are dropped
 - no user namespaces yet, thus no (local) root in containers
 - network: SDN per project
-- storage: SELinux labelling
+- storage: SELinux labeling (for supported storage types)
 
 Note:
 
@@ -132,10 +145,12 @@ TODO: add SCC model
 
 ---
 
-## Security in OpenShift (contd.)
+## Security in OpenShift - runtime privileges
 
-- infra nodes (masters, etcd, lb, glusterfs) do not run user processes 
-- user nodes have limited access to infra
-- masters are only ones that talk to etcd (state)
-- more isolation than a compute cluster
-- less isolation than VMs
+- Containers can request additional capabilities
+- accounts can be given rights to use (for example)
+  - host network stack
+  - fixed UIDs
+  - root UID
+- these privileges are abstracted as Security Context Constraints (SCC) 
+- in a shared environment, access to these is mostly reserved to system components 
