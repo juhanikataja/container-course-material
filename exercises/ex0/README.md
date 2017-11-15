@@ -24,8 +24,9 @@ using the `oc` command line tool.
    ![Command Line Tools](cli-tools-in-webui.png)
 
 3. If the `oc` tool is not already installed on your computer, you can find a
-   link to the releases on the "Command Line Tools" page. Install `oc` if
-   needed. It should be a simple binary that you can just drop in your PATH.
+   link to the releases on the "Command Line Tools" page. Looks for 'Download oc'.
+   Install `oc` if needed. It should be a simple binary that you can just 
+   drop in your PATH. To add shell completion support, see `oc completion -h`.
 
 4. Copy the login command from the page and paste it into a terminal. You can
    get login status with the `oc status` command.

@@ -119,6 +119,8 @@
 - network: SDN per project
 - storage: SELinux labelling
 
+TODO: add SCC model
+
 ---
 
 ## Security in OpenShift (contd.)
