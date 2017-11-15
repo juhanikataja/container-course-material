@@ -1,4 +1,4 @@
-# Exercise 3 - Wrapping API objects into an app
+# Exercise 3 - Wrapping API objects into a Template
 
 ## Prerequisites
 
@@ -20,6 +20,8 @@ We will deploy the same NGINX application as in the previous two exercises, but
 this time we will create it from a template that contains all the API objects.
 We will also look into making the template configurable so we can launch copies
 of the application with different settings.
+
+The architecture is the same as it is in exercise 2.
 
 ## Relevant documentation
 

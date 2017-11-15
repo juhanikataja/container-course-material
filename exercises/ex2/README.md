@@ -19,12 +19,17 @@ serving some content. We will look at storing data for our website on a
 some real content now, we should make sure the **Route** to our web site is
 secure. We will also see how to scale up our site to prepare for more visitors.
 
+The architecture of the resulting app will look like this:
+
+![Exercise 2 architecture](ex2-arch.png)
+
 ## Relevant documentation
 
 * [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 * [Kubernetes: Persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 * [Kubernetes: Services](https://kubernetes.io/docs/concepts/services-networking/service/)
 * [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
+* [OpenShift: Copying Files to or from a Container](https://docs.openshift.org/latest/dev_guide/copy_files_to_container.html)
 
 ## Steps
 

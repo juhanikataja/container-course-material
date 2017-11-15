@@ -21,6 +21,10 @@ stateless deployment of NGINX. You can have a look at them with your favorite
 editor to see what they contain. We will use these files to set up NGINX and see
 that we can access the newly create NGINX application via a web browser.
 
+The architecture of the resulting app will look like this:
+
+![Exercise 1 architecture](ex1-arch.png)
+
 ## Relevant documentation
 
 * [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
