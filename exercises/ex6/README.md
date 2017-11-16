@@ -6,14 +6,14 @@ Exercise 0 completed.
 
 ## Learning objectives
 
-* Learn how to use source-to-image -mechanism to build an application
+* Learn how to use the source-to-image -mechanism to build an application
   directly from source code
 
 ## Description
 
-In this exercise we learn how to build an application only using source code. Then 
+In this exercise we learn how to build an application using only source code. Then 
 we modify the source and update the application. We are letting OpenShift build
-the application containers for us by using source-to-image (s2i) mechanism.
+the application containers for us by using the source-to-image (s2i) mechanism.
 
 The application is a small Python web server, based on [Bottle framework](https://bottlepy.org/).
 
@@ -58,9 +58,9 @@ The application is a small Python web server, based on [Bottle framework](https:
     oc new-app . --context-dir src --name ex6
     ```
     
-    We can track the build process by specifying the build context name. The other
-    alternative is to invoke `oc logs` on the build-pod directly, but as the build
-    config name does not change from build to build, this is more handy.
+    We can track the build process by specifying the **BuildConfig** name. The other
+    alternative is to invoke `oc logs` on the build pod directly, but as the
+    **BuildConfig** name does not change from build to build, this is more handy.
     ```bash
     oc logs -f bc/simple-bottle
     ```
@@ -70,19 +70,20 @@ The application is a small Python web server, based on [Bottle framework](https:
     oc get all
     ```
 
-    We then expose it over HTTPS by creating a route
-     * the type is 'edge', meaning it is SSL terminated by OpenShift's router
+    We then expose it over HTTPS by creating a **Route**
+     * the type is 'edge', meaning it is TLS terminated by OpenShift's router
      * we redirect all HTTP traffic to HTTPS port with `--insecure-policy` option.
     ```bash
     oc create route edge ex6-route --insecure-policy='Redirect' --service ex6
     oc get route ex6-route 
     ```
     
-    Finally, we can open our app in browser and check the default page and /healthz -output.
+    Finally, we can open our app in a browser and check the default page and
+    /healthz -output.
 
-4. Modify source code and trigger a build
+4. Modify the source code and trigger a **Build**.
 
-    Then we start a build from our local sources     
+    Start a build from our local sources:
     ```bash
     oc start-build ex6 --from-dir . --follow
     ```
@@ -99,4 +100,4 @@ The application is a small Python web server, based on [Bottle framework](https:
 
     See [Triggering Builds](https://docs.openshift.org/latest/dev_guide/builds/triggering_builds.html#github-webhooks)
     in OpenShift developer guide. You can also use the WebUI and navigate to `Builds -> ex6 ->
-    Configuration` to get the WebHook URLs.   
+    Configuration` to get the WebHook URLs.
