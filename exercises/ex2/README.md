@@ -17,8 +17,10 @@ browser.
 > not something you should do for a real site. Here we simply do it to
 > demonstrate the usage of volumes and the `oc rsync` command in a way that is
 > hopefully easy to understand if you have some familiarity with web servers.
-> For a real site, you should put the content of your site into the container
-> images as part of your build process.
+> For a real site, you should put everything needed to run the site in the
+> container images as part of the build process. Runtime state should be stored
+> on persistent storage. See
+> [The Twelve-Factor App: V. Build, release, run](https://12factor.net/build-release-run).
 
 Now that we have a basic NGINX web server installation, we should look into
 serving some content. We will look at storing data for our website on a

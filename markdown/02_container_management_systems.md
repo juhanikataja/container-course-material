@@ -22,11 +22,12 @@ Note:
 - originally developed by Google, donated 2015
 - now developed by Google, Red Hat, CoreOS, ...
 - open source, one of the biggest and most active projects in
-  GitHub  
+  GitHub
 - Google Container Engine (GKE) implements K8s API
 - some notable workloads
-  - GitHub frontend
-  - Pokémon Go
+  - [GitHub frontend](https://githubengineering.com/kubernetes-at-github/)
+  - [Pokémon Go](https://cloudplatform.googleblog.com/2016/09/bringing-Pokemon-GO-to-life-on-Google-Cloud.html)
+  - [Philips lightbulbs](https://www.bloomberg.com/features/2017-kubernetes/)
 - [kubernetes.io](https://kubernetes.io/)
 
 Note:
@@ -38,7 +39,7 @@ Note:
 ## OpenShift
 
 - from Red Hat
-- "Enterprise Kubernetes for Developers" 
+- "Enterprise Kubernetes for Developers"
 - open source ([github.com/openshift](https://github.com/openshift))
 - batteries included
   - application templates
@@ -70,7 +71,7 @@ Note:
   - community supported
   - run on CentOS-7, Fedora, Atomic Host
 - Red Hat OpenShift Container Platform    
-  - Red Hat support, runs on supported OS stacks 
+  - Red Hat support, runs on supported OS stacks
 - OpenShift operated by Red Hat in a public cloud
   - OpenShift Online - shared
   - OpenShift Dedicated    
@@ -79,7 +80,7 @@ Note:
 
 ## OpenShift platform development model
 
-- development is very open 
+- development is very open
   - https://github.com/openshift/origin/issues
   - https://trello.com/atomicopenshift
 - based on a stable K8s version, a few releases behind from bleeding edge
@@ -93,11 +94,11 @@ Note:
 ## OpenShift releases
 
 - Currently (Nov 2017) we are on 3.6.1
-- up to 1.5 there was two versioning schemes 
+- up to 1.5 there was two versioning schemes
   - 3.x for commercial
   - 1.x for Origin
-- minor number shows K8s release (3.6 -> 1.6) 
-- in the future OpenShift could be just K8s extensions 
+- minor number shows K8s release (3.6 -> 1.6)
+- in the future OpenShift could be just K8s extensions
   ([source: commons briefing #98](
   https://blog.openshift.com/openshift-commons-briefing-98-kubernetes-release-1-8-update/))
 
@@ -133,15 +134,15 @@ Note:
 - WebUI for Docker registry
 - container resource usage monitoring
   - CPU, memory, network
-- terminal access to running containers 
-  - no host login required 
+- terminal access to running containers
+  - no host login required
 - centralized logging
 
 ---
 
 ## Security in OpenShift - infrastructure
 
-- infra nodes (masters, etcd, lb, glusterfs) do not run user processes 
+- infra nodes (masters, etcd, lb, glusterfs) do not run user processes
 - user nodes have limited access to infra
 - masters are the only ones that talk to etcd (state)
 
@@ -169,5 +170,5 @@ Note:
   - host network stack
   - fixed UIDs
   - root UID
-- these privileges are abstracted as Security Context Constraints (SCC) 
-- in a shared environment, access to these is mostly reserved to system components 
+- these privileges are abstracted as Security Context Constraints (SCC)
+- in a shared environment, access to these is mostly reserved to system components
