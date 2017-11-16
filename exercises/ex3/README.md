@@ -14,8 +14,10 @@ Exercises 0-2 completed.
 > not something you should do for a real site. Here we simply do it to
 > demonstrate the usage of volumes and the `oc rsync` command in a way that is
 > hopefully easy to understand if you have some familiarity with web servers.
-> For a real site, you should put the content of your site into the container
-> images as part of your build process.
+> For a real site, you should put everything needed to run the site in the
+> container images as part of the build process. Runtime state should be stored
+> on persistent storage. See
+> [The Twelve-Factor App: V. Build, release, run](https://12factor.net/build-release-run).
 
 So far we've been creating API objects individually. These API objects have
 constituted an app when put together. Instead of creating API objects one by
