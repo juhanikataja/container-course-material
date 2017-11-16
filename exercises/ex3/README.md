@@ -10,6 +10,13 @@ Exercises 0-2 completed.
 
 ## Description
 
+> **Disclaimer:** The method we use to add content to our site in this exercise is
+> not something you should do for a real site. Here we simply do it to
+> demonstrate the usage of volumes and the `oc rsync` command in a way that is
+> hopefully easy to understand if you have some familiarity with web servers.
+> For a real site, you should put the content of your site into the container
+> images as part of your build process.
+
 So far we've been creating API objects individually. These API objects have
 constituted an app when put together. Instead of creating API objects one by
 one, there is another way. You can pack things needed to run an app into an
