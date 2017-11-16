@@ -32,6 +32,12 @@ Source: wikipedia
 
 ---
 
+Note:
+
+TODO: Rahti-int description, our deployment pipeline
+
+---
+
 ### API object
 
 * Described in YAML or JSON
