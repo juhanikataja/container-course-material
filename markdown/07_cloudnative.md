@@ -9,7 +9,7 @@
 
 ---
 
-## Priciples
+## Principles
 
 * Everything is code
 * Maximize similarity between dev and prod environments
@@ -170,3 +170,14 @@ Note:
    * Admin processes are one-off tasks like DB migration, running a console for
      the app or one-time scripts in the apps repo
    * Should run in the same execution environment as the app
+
+---
+
+## Programmatic access
+
+* Kubernetes API is tidy and reasonably easy to access
+* Pattern: use the platform to spawn resources on demand
+  * Containers for client sessions (Notebooks)
+  * Compute jobs, either interactive or batch
+* The controller can also run on the platform
+* The robot credentials can be limited
