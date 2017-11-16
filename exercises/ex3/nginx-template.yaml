@@ -33,6 +33,15 @@ objects:
           containers:
           - name: nginx
             image: ${NGINX_IMAGE}
+            livenessProbe:
+              tcpSocket:
+                port: nginx-port
+              initialDelaySeconds: 5
+              periodSeconds: 20
+            readinessProbe:
+              httpGet:
+                path: /
+                port: nginx-port
             volumeMounts:
               - mountPath: /usr/share/nginx/html
                 name: web-content-volume
@@ -80,7 +89,7 @@ parameters:
   - name: "NGINX_REPLICAS"
     displayName: "NGINX replica count"
     description: "How many NGINX pods should be created."
-    value: "2"
+    value: "4"
     required: true
   - name: "NGINX_IMAGE"
     displayName: "NGINX image"

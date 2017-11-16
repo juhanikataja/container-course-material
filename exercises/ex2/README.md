@@ -34,9 +34,9 @@ The architecture of the resulting app will look like this:
 ## Steps
 
 1. Before we add our content, let's first make the **Route** to NGINX secured by
-   TLS. You can replace your existing **Route** using the `nginx-tls-route.yaml`
-   file found in the directory for this exercise. You can compare the new
-   **Route** definition with the old one to see what's changed:
+   TLS. You can replace (`oc replace`) your existing **Route** using the
+   `nginx-tls-route.yaml` file found in the directory for this exercise. You can
+   compare the new **Route** definition with the old one to see what's changed:
    ```bash
    diff -u ex1/nginx-route.yaml ex2/nginx-tls-route.yaml
    ```
@@ -52,8 +52,8 @@ The architecture of the resulting app will look like this:
    Notice the "ReadWriteMany" access mode. This makes it possible to attach the
    same volume to multiple **Pods** at the same time. If the access mode was
    "ReadWriteOnce" instead, the volume would only be attachable to one **Pod**
-   at a time. The supported access modes depend on the underlying storage.
-   In this example we are using GlusterFS which supports ReadWriteMany.
+   at a time. The supported access modes depend on the underlying storage. For
+   this exercise, the underlying storage needs to support "ReadWriteMany".
 
 4. Watch the **PersistentVolumeClaim** listing to see when the new claim enters
    the **Bound** state and is ready for use (the handy -w flag can be used with
@@ -75,21 +75,58 @@ The architecture of the resulting app will look like this:
    have just replaced the content of the default html directory with an empty
    volume.
 
-7. Deploy your fancy new website using `oc rsync` on one of the **Pods** using
-   content from the html subdirectory of the exercise directory:
+7. Hang on, we got an error from our site. All our **Pods** are in a bad state,
+   yet if you run `oc get pods` they all seem to be running normally. This is
+   because we have not defined a *livenessProbe* and a *readinessProbe* for the
+   **Pods**. Let's do that next, starting with a *livenessProbe*:
    ```bash
-   # Get a name for one of the Pods
-   oc get pods
-   # Copy over the html/ dir to the Pod
-   oc rsync html/ <pod name>:/usr/share/nginx/html/
+   oc patch deployment nginx-deployment -p "$(cat nginx-livenessprobe.yaml)"
    ```
-8. You should now have some content that was very expensive to create on your
-   web page!
+   Here we define a check to see if someone is answering to TCP connections in
+   the port configured in the *containerPort* setting of the **Pod**.
 
-9. This new content is sure to bring hordes of interested visitors to the site,
-   so let's scale up the **Deployment** to accommodate for the increased
-   traffic:
+8. If you look at the output of `oc get pods` now, you'll see the **Pods** are
+   still reported as running normally. This is because the *livenessProbe* only
+   checks to see if it can access the web server at all. To know if the web
+   server is ready to serve traffic, we also need a *readinessProbe*:
    ```bash
-   oc scale --replicas=4 deployment nginx
+   oc patch deployment nginx-deployment -p "$(cat nginx-readinessprobe.yaml)"
    ```
-   After running this, there will be four **Pods** running instead of two.
+   Here we define an HTTP check that expects an HTTP status code between 200
+   (inclusive) and 400 (exclusive).
+
+9. After applying the *readinessProbe*, run `oc get pods -w` to watch a new
+   deploy take place. You will see that a new **Pod** is created, but it is
+   marked as not ready ("READY 0/1"). This is the *readinessProbe* doing its
+   job. Let's add some content that will make the web server report a non-error
+   status code so that the *readinessProbe* succeeds.
+
+10. Deploy your fancy new website using `oc rsync` on one of the **Pods** using
+    content from the html subdirectory of the exercise directory:
+    ```bash
+    # Get a name for one of the Pods
+    oc get pods
+    # Copy over the html/ dir to the Pod
+    oc rsync html/ <pod name>:/usr/share/nginx/html/
+    # Now look at the status of your pods
+    oc get pods -w
+    ```
+
+11. You should now have some content that was very expensive to create on your
+    web page!
+
+12. This new content is sure to bring hordes of interested visitors to the site,
+    so let's scale up the **Deployment** to accommodate for the increased
+    traffic:
+    ```bash
+    oc scale --replicas=4 deployment nginx-deployment
+    ```
+    After running this, there will be four **Pods** running instead of two.
+
+13. Finally, have a look at what the **Deployment** looks like now after all
+    these additions:
+    ```bash
+    oc get deployment nginx-deployment -o yaml
+    ```
+    You should see the storage and the probes you added. You should also see
+    that the size of the **ReplicaSet** is now four.

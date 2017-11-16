@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: nginx
+          livenessProbe:
+            tcpSocket:
+              port: nginx-port
+            initialDelaySeconds: 5
+            periodSeconds: 20

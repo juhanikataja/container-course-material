@@ -58,12 +58,18 @@ The architecture of the resulting app will look like this:
    ```
    Notice that the **Pods** are not working correctly. This is because of
    security restrictions in OpenShift that enable it to be a multi-tenant cloud
-   platform.
+   platform. You can get more information about why a **Pod** is not working
+   correctly with the `oc logs` command:
+   ```bash
+   oc logs <name of a pod>
+   ```
 
 5. You will need to replace the NGINX image with one that is compatible with
-   OpenShift. You can use either `oc edit` or `oc replace -f` to achieve this.
-   If you have access to Docker, you can get a Dockerfile by the NGINX folk
-   here:
+   OpenShift. You can use either `oc edit <deployment name>` or
+   `oc replace -f <modified deployment yaml>` to achieve this.
+   Modify the **Deployment** you created in an earlier step to change the image.
+   You can list your **Deployments** with `oc get deployments`. If you have
+   access to Docker, you can get a Dockerfile by the NGINX folk here:
    [nginxinc/openshift-nginx](https://github.com/nginxinc/openshift-nginx).
    If you don't have access to Docker, you can also get the image at
    `docker-registry.rahti-int.csc.fi/oso-course/openshift-nginx`. Note that this
@@ -71,14 +77,16 @@ The architecture of the resulting app will look like this:
    OpenShift, but it's good to be aware that some images do require some
    changes.
 
-6. Inspect the status of the **Pods** once more. They should now be running.
+6. Inspect the status of the **Pods** once more. They should end up in the
+   "Running" state after a small wait.
 
 7. The default NGINX image uses port 80 by default, but the one for OpenShift
-   uses 8080 instead, so you will need to change the port exposed by the pods in
-   the **Deployment** and the **targetPort** setting in the **Service**. Note
-   that **Services** are immutable, so you cannot use `oc edit` or
-   `oc replace -f`. You need to use `oc replace --force -f` when you update the
-   **Service**. This deletes and recreates the **Service**.
+   uses 8080 instead, so you will need to change the port exposed by the
+   **Pods** in the **Deployment**. The *targetPort* setting in the **Service**
+   references the port in the **Pods** by name, so it does not need to be
+   updated. If you ever do need to modify a **Service**, note that they are
+   immutable, so you cannot use `oc edit` or `oc replace -f`. You need to use
+   `oc replace --force -f`. This deletes and recreates the **Service**.
 
 8. If all went well, you should now be able to access NGINX. Check the address
     from the **Route** you created in an earlier step:
