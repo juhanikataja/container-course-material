@@ -1,0 +1,11 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: nginx
+          readinessProbe:
+            httpGet:
+              path: /
+              port: nginx-port
+            initialDelaySeconds: 3
+            periodSeconds: 3

@@ -80,7 +80,12 @@ The architecture is the same as it is in exercise 2.
    ```
    You can use the same image as in the previous exercises.
 
-6. As in the previous exercise, copy some content into your site:
+6. If you look at the status of your **Pods** now, you'll see none of them are
+   ready. This is because the site is missing content as was the case in the
+   previous exercise. If you access the URL of the site, you will get an
+   "Application is not available" error from OpenShift.
+
+7. As in the previous exercise, copy some content into your site:
    ```bash
    # Get one of the pods' name
    oc get pods
@@ -88,17 +93,22 @@ The architecture is the same as it is in exercise 2.
    oc rsync ../ex2/html/ <pod name>:/usr/share/nginx/html/
    ```
 
-7. If you access the site now, you should see the same content as in exercise 2.
+8. Get the URL of the site from the **Route**:
+   ```bash
+   oc get routes
+   ```
 
-8. Other things to try:
-   * See how the items created look like in the web UI
-   * Recreate the app from the web interface:
-      * Delete the current project
-      * Create a new project
-      * In the application catalog, select "Import YAML / JSON"
-      * Click "Browse" and select the **Template** file
-      * Click "Create", select "Save template"
-      * Click "Add to Project"
-      * Find your **Template** under "Uncategorized"
-      * Select the "nginx-site" **Template**
-      * Fill in an image and click "Create"
+9. If you access the site now, you should see the same content as in exercise 2.
+
+10. Other things to try:
+    * See how the items created look like in the web UI
+    * Recreate the app from the web interface:
+       * Delete the current project
+       * Create a new project
+       * In the application catalog, select "Import YAML / JSON"
+       * Click "Browse" and select the **Template** file
+       * Click "Create", select "Save template"
+       * Click "Add to Project"
+       * Find your **Template** under "Uncategorized"
+       * Select the "nginx-site" **Template**
+       * Fill in an image and click "Create"
