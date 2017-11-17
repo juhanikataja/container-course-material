@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="service.svg"
-   inkscape:export-filename="/home/rlaurika/src/reveal.js/reveal.js/img/service.png"
-   inkscape:export-xdpi="70"
-   inkscape:export-ydpi="70">
+   inkscape:export-filename="/home/rlaurika/src/reveal.js/container-course-material/img/service.png"
+   inkscape:export-xdpi="90.028793"
+   inkscape:export-ydpi="90.028793">
   <defs
      id="defs7388" />
   <sodipodi:namedview
@@ -29,16 +29,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.58"
-     inkscape:cx="925.93937"
+     inkscape:cx="818.81125"
      inkscape:cy="520"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1101"
-     inkscape:window-x="1366"
-     inkscape:window-y="28"
+     inkscape:window-width="1366"
+     inkscape:window-height="731"
+     inkscape:window-x="0"
+     inkscape:window-y="360"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7391">
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,7 +59,9 @@
      transform="translate(0,27.637408)">
     <g
        id="g8445"
-       transform="translate(-29.310342,-300.00004)">
+       transform="translate(106.89657,-139.6552)"
+       inkscape:export-xdpi="120.01846"
+       inkscape:export-ydpi="120.01846">
       <rect
          y="342.01773"
          x="482.75861"

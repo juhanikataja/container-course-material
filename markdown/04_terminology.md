@@ -5,7 +5,8 @@
 ### API object
 
 * Described in YAML or JSON
-* Represents an abstraction of a concept
+* Represents a single component in a Kubernetes application's architecture
+  (like a load balancer or a storage volume)
 * Examples:
   * Pod
   * Service
@@ -14,13 +15,13 @@
 
 ---
 
-  ### Namespace/Project
+### Namespace/Project
 
   * User objects live in their namespaces/projects
   * Services are accessible to Pods in the same namespace
   * Users can have different roles/rights (globally or locally to the namespace)
     * admin, self-provisioner, basic-user, cluster-reader   
-  * admin of a namespace (=You!) can add others as collaborators
+  * The admin of a namespace (=you!) can add others as collaborators
 
 ---
 
@@ -42,11 +43,11 @@ A collection of one or more containers and volumes with a common IP.
 
 ### Pod
 
-* smallest unit to schedule
-* has resource limits
-  * memory
+* Smallest unit to schedule
+* Has resource limits
+  * Memory
   * CPU
-* subject to readiness and health checks (per container)
+* Subject to readiness and health checks (per container)
 
 ---
 
@@ -79,7 +80,7 @@ Manages rolling updates.
 * Provides a way to access Services externally
 * Implemented by HAProxy pods ("Routers") in OpenShift
 * Maps traffic for a given DNS name to a set of Pods backing a Service
-* Optionally terminates SSL
+* Optionally terminates TLS
 
 ---
 
