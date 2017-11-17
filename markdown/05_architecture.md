@@ -31,8 +31,8 @@ Source: wikipedia
 
 ![Openshift deployment](img/openshift_deployment.png)
 
----
-
 Note:
 
-TODO: Rahti-int description, our deployment pipeline
+* Show description for the cluster we are running on
+
+* Show our deployment pipeline
