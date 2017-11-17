@@ -68,19 +68,17 @@ Note:
 
 ---
 
-## Containers
-## ≠
-## light weight virtual machines
+
+# Containers ≠ light weight virtual machines
 
 ---
 
 ![VMs vs. containers](img/vm_vs_container.png "VMs vs. containers")
 
 ---
+<br/>
 
-## Containers
-## ≠
-## Docker
+# Containers ≠ Docker
 
 ---
 
@@ -96,7 +94,7 @@ Note:
 
 ---
 
-### Alternatives
+## Alternatives
 
 * rkt
 * Intel Clear Containers
@@ -114,7 +112,7 @@ Note:
 
 ---
 
-### Docker commands
+## Docker commands
 
 **Run** container:
 ```
@@ -127,7 +125,7 @@ docker ps
 
 ---
 
-### Docker commands
+## Docker commands
 
 **Pull** container image from a **registry**:
 ```

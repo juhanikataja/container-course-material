@@ -3,8 +3,8 @@
 ---
 
 ## K8s architecture
-* master-slave model
-* state in etcd (usually clustered)
+* Master-Slave model
+* State in etcd (usually clustered)
 
 ---
 
@@ -12,18 +12,20 @@
 
 > "A controller is a reconciliation loop that drives actual cluster state toward the desired cluster state"
 
-Source: wikipedia
+Source: Wikipedia
 
 ---
 
 ## K8s principles
 
-* controllers
-* target state
-* current state
-* actions
+* Controllers
+* Target state
+* Current state
+* Actions
 
 ---
+
+<br/>
 
 ## How does our OpenShift deployment look like
 
