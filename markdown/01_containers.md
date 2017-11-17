@@ -1,4 +1,4 @@
-## Docker container orchestration with OpenShift
+# Docker container orchestration with OpenShift
 
 ---
 
