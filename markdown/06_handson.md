@@ -16,6 +16,8 @@ oc status
 
 ## Basic commands
 
+Get information:
+
 ```bash
 # List existing API objects
 oc get pods|deployments|services|...
@@ -23,6 +25,11 @@ oc get pods|deployments|services|...
 oc describe pod|deployment|service|... myapiobject
 # Get the YAML representation of an API object
 oc get pod|deployment|service|... myapiobject -o yaml
+```
+
+Create or update:
+
+```bash
 # Create an API object from a file
 oc create -f somefile.yaml
 # Edit an existing API object
