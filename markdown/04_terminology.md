@@ -2,42 +2,6 @@
 
 ---
 
-## K8s architecture
-* master-slave model
-* state in etcd (usually clustered)
-
----
-
-## K8s principles
-
-"A controller is a reconciliation loop that drives actual cluster state toward the desired cluster state"
-
-Source: wikipedia
-
----
-
-## K8s principles
-
-* controllers
-* target state
-* current state
-* actions
----
-
-## How does our OpenShift deployment look like
-
----
-
-![Openshift deployment](img/openshift_deployment.png)
-
----
-
-Note:
-
-TODO: Rahti-int description, our deployment pipeline
-
----
-
 ### API object
 
 * Described in YAML or JSON
@@ -47,6 +11,16 @@ TODO: Rahti-int description, our deployment pipeline
   * Service
   * Deployment
   * ReplicaSet
+
+---
+
+  ### Namespace/Project
+
+  * User objects live in their namespaces/projects
+  * Services are accessible to Pods in the same namespace
+  * Users can have different roles/rights (globally or locally to the namespace)
+    * admin, self-provisioner, basic-user, cluster-reader   
+  * admin of a namespace (=You!) can add others as collaborators
 
 ---
 
@@ -65,6 +39,7 @@ A collection of one or more containers and volumes with a common IP.
 ![Pods](img/pods.png "Pods")
 
 ---
+
 ### Pod
 
 * smallest unit to schedule
@@ -72,42 +47,6 @@ A collection of one or more containers and volumes with a common IP.
   * memory
   * CPU
 * subject to readiness and health checks (per container)
-
----
-
-## Storage (persistent volumes, claims, model)
-
-A **PersistentVolume** stores state. Claimed via **PersistentVolumeClaim**.
-
-![PersistentVolumeClaim](img/persistentvolumeclaim.png "PersistentVolumeClaim")
-
----
-
-## Persistent volume
-* Global object (lives outside namespaces)
-* Can be created by administrators
-* Can be created dynamically by Dynamic Volume Provisioning
-* Obtained by user by creating a PersistentVolumeClaim  
-
----
-
-## Persistent volume claim
-* Created in project namespace
-* properties
-  * size
-  * access mode (ReadOnly, ReadWriteOnce, ReadWriteMany)
-  * storage class
-* StorageClass -objects provide a way to select PV properties
-  * backed by SSD, backed by spinning rust, mirrored, erasure coded,...
-
----
-
-### Persistence model
-
-* Pods can use scratch space local to the node it is running on
-* **Any data that should persist has to be written to a volume**
-* System is free to delete and respawn Pods
-* Volume follows Pod when it is rescheduled to a different host
 
 ---
 
@@ -144,16 +83,43 @@ Manages rolling updates.
 
 ---
 
-### Namespace/Project
+## Persistent storage
 
-* User objects live in their namespaces/projects
-* Services are accessible to Pods in the same namespace
-* Users can have different roles/rights (globally or locally to the namespace)
-  * admin, self-provisioner, basic-user, cluster-reader   
-* admin of a namespace (=You!) can add others as collaborators
+A **PersistentVolume** stores state. Claimed via **PersistentVolumeClaim**.
+
+![PersistentVolumeClaim](img/persistentvolumeclaim.png "PersistentVolumeClaim")
+
+---
+
+## Persistent volume
+* Global object (lives outside namespaces)
+* Can be created by administrators
+* Can be created dynamically by Dynamic Volume Provisioning
+* Obtained by user by creating a PersistentVolumeClaim  
+
+---
+
+## Persistent volume claim
+* Created in project namespace
+* properties
+  * size
+  * access mode (ReadOnly, ReadWriteOnce, ReadWriteMany)
+  * storage class
+* StorageClass -objects provide a way to select PV properties
+  * backed by SSD, backed by spinning rust, mirrored, erasure coded,...
+
+---
+
+### Persistence model
+
+* Pods can use scratch space local to the node it is running on
+* **Any data that should persist has to be written to a volume**
+* System is free to delete and respawn Pods
+* Volume follows Pod when it is rescheduled to a different host
 
 ---
 
 ## More information
 
-**[https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/)**
+* **[kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/)**
+* **[docs.openshift.org/latest/architecture/core_concepts/](https://docs.openshift.org/latest/architecture/core_concepts/)**
