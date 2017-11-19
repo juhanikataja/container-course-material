@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 1052.3622 744.09448"
+   id="svg4468"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="container.svg"
+   inkscape:export-filename="/home/rlaurika/src/reveal.js/reveal.js/img/container.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4470" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.24"
+     inkscape:cx="348.00825"
+     inkscape:cy="381.4098"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1341"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4473">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-308.26772)">
+    <g
+       id="g5282">
+      <rect
+         y="716.95447"
+         x="249.23648"
+         height="108.59624"
+         width="521.68835"
+         id="rect4136"
+         style="fill:#27b7da;fill-opacity:1;stroke:#000000;stroke-width:3.99999952;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         transform="scale(0.9322689,1.0726519)"
+         sodipodi:linespacing="125%"
+         id="text4279"
+         y="733.45477"
+         x="484.15836"
+         style="font-style:normal;font-weight:normal;font-size:49.57313156px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40.00000381px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start"
+           y="733.45477"
+           x="484.15836"
+           id="tspan4281"
+           sodipodi:role="line">Kernel</tspan></text>
+    </g>
+    <g
+       id="g5206"
+       transform="translate(16.129044,0)">
+      <g
+         id="g5201">
+        <rect
+           style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:3.99999976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4365-2"
+           width="254.62962"
+           height="321.2963"
+           x="233.10744"
+           y="383.66891" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="266.72067"
+           y="431.93655"
+           id="text4367-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4369-8"
+             x="266.72067"
+             y="431.93655"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start">Container</tspan></text>
+      </g>
+      <g
+         transform="translate(0.46294403,4.0322581)"
+         id="g5188">
+        <rect
+           style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect4153-0-1"
+           width="224.90875"
+           height="232.94127"
+           x="247.50493"
+           y="450.32254" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="314.27744"
+           y="577.47314"
+           id="text4299-9"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4301-8"
+             x="314.27744"
+             y="577.47314">Apps</tspan></text>
+      </g>
+    </g>
+    <g
+       transform="translate(283.18775,0)"
+       id="g5206-2">
+      <g
+         id="g5201-7">
+        <rect
+           style="fill:#ffc438;fill-opacity:1;stroke:#000000;stroke-width:3.99999976;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4365-2-0"
+           width="254.62962"
+           height="321.2963"
+           x="233.10744"
+           y="383.66891" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="266.72067"
+           y="431.93655"
+           id="text4367-2-9"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4369-8-7"
+             x="266.72067"
+             y="431.93655"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;writing-mode:lr-tb;text-anchor:start">Container</tspan></text>
+      </g>
+      <g
+         transform="translate(0.46294403,4.0322581)"
+         id="g5188-4">
+        <rect
+           style="fill:#00e173;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect4153-0-1-7"
+           width="224.90875"
+           height="232.94127"
+           x="247.50493"
+           y="450.32254" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="314.27744"
+           y="577.47314"
+           id="text4299-9-4"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4301-8-7"
+             x="314.27744"
+             y="577.47314">Apps</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

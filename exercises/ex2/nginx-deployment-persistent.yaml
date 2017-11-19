@@ -1,0 +1,12 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: web-content-volume
+      volumes:
+        - name: web-content-volume
+          persistentVolumeClaim:
+            claimName: web-content-pvc
