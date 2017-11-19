@@ -1,5 +1,7 @@
 # Hands-on exercises
 
+<!-- .slide: data-background="img_theme/topic_background.png" -->
+
 ---
 
 ## CLI bootstrap

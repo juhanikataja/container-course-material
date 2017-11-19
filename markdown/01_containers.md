@@ -1,5 +1,7 @@
 # Docker container orchestration with OpenShift
 
+<!-- .slide: data-background="img_theme/topic_background.png" -->
+
 ---
 
 ## What are containers?
@@ -68,8 +70,10 @@ Note:
 
 ---
 
+<br/>
+<br/>
 
-# Containers ≠ light weight virtual machines
+## Containers ≠ light weight virtual machines
 
 ---
 
@@ -77,8 +81,9 @@ Note:
 
 ---
 <br/>
+<br/>
 
-# Containers ≠ Docker
+## Containers ≠ Docker
 
 ---
 

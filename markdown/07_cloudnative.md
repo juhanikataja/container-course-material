@@ -1,5 +1,7 @@
 # Cloud native apps
 
+<!-- .slide: data-background="img_theme/topic_background.png" -->
+
 ---
 
 ## Change of mindset needed

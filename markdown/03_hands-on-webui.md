@@ -1,5 +1,7 @@
 # Hands-on in the OpenShift web UI
 
+<!-- .slide: data-background="img_theme/topic_background.png" -->
+
 ---
 
 ## 1. Rocket.Chat

@@ -1,8 +1,10 @@
 # Terminology
 
+<!-- .slide: data-background="img_theme/topic_background.png" -->
+
 ---
 
-### API object
+## API object
 
 * Described in YAML or JSON
 * Represents a single component in a Kubernetes application's architecture
@@ -15,25 +17,25 @@
 
 ---
 
-### Namespace/Project
+## Namespace/Project
 
-  * User objects live in their namespaces/projects
-  * Services are accessible to Pods in the same namespace
-  * Users can have different roles/rights (globally or locally to the namespace)
-    * admin, self-provisioner, basic-user, cluster-reader   
-  * The admin of a namespace (=you!) can add others as collaborators
+* User objects live in their namespaces/projects
+* Services are accessible to Pods in the same namespace
+* Users can have different roles/rights (globally or locally to the namespace)
+  * admin, self-provisioner, basic-user, cluster-reader   
+* The admin of a namespace (=you!) can add others as collaborators
 
 ---
 
-### Label
+## Label
 
-* A key value pair like `app: nginx`
+* A key-value pair like `app: nginx`
 * Many things can have a label attached to them
 * Can be used for selecting a set of API objects
 
 ---
 
-### Pod
+## Pod
 
 A collection of one or more containers and volumes with a common IP.
 
@@ -41,7 +43,7 @@ A collection of one or more containers and volumes with a common IP.
 
 ---
 
-### Pod
+## Pod
 
 * Smallest unit to schedule
 * Has resource limits
@@ -51,7 +53,7 @@ A collection of one or more containers and volumes with a common IP.
 
 ---
 
-### Service
+## Service
 
 Provides a stable virtual IP and port for a set of pods.
 
@@ -59,7 +61,7 @@ Provides a stable virtual IP and port for a set of pods.
 
 ---
 
-### ReplicaSet
+## ReplicaSet
 
 Ensure *n* copies of a pod are running.
 
@@ -67,7 +69,7 @@ Ensure *n* copies of a pod are running.
 
 ---
 
-### Deployment
+## Deployment
 
 Manages rolling updates.
 
@@ -75,7 +77,7 @@ Manages rolling updates.
 
 ---
 
-### Route/Ingress
+## Route/Ingress
 
 * Provides a way to access Services externally
 * Implemented by HAProxy pods ("Routers") in OpenShift
