@@ -65,7 +65,7 @@ The architecture of the resulting app will look like this:
    ```
 
 5. You will need to replace the NGINX image with one that is compatible with
-   OpenShift. You can use either `oc edit <deployment name>` or
+   OpenShift. You can use either `oc edit deployment <deployment name>` or
    `oc replace -f <modified deployment yaml>` to achieve this.
    Modify the **Deployment** you created in an earlier step to change the image.
    You can list your **Deployments** with `oc get deployments`. If you have
