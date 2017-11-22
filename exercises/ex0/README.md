@@ -25,7 +25,7 @@ using the `oc` command line tool.
 
 3. If the `oc` tool is not already installed on your computer, you can find a
    link to the releases on the "Command Line Tools" page. Look for 'Download oc'.
-   Install `oc` if needed. It should be a simple binary that you can just 
+   Install `oc` if needed. It should be a simple binary that you can just
    drop in your PATH. To add shell completion support, see `oc completion -h`.
 
 4. Copy the login command from the page and paste it into a terminal. You can
@@ -38,3 +38,16 @@ using the `oc` command line tool.
    ```
    After running this command, later commands will be in the context of the new
    project.
+
+6. Ensure your login session is correct and that you have the correct project
+   selected:
+   ```bash
+   oc status
+   ```
+
+7. Check what version of OpenShift/Kubernetes you are using:
+   ```bash
+   oc version
+   ```
+   This is important so that you know what version's documentation to look at
+   when using OpenShift.
