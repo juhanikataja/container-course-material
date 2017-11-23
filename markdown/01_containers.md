@@ -112,7 +112,11 @@ Note:
 
 * A Docker **registry** is a server that stores Docker images
 * The default one when using Docker's CLI is the **Docker Hub**
-* There are many others: quay.io, AWS EC2 Container Registry, Google Container Registry
+* There are many others:
+  * [Red Hat Container Catalog](https://access.redhat.com/containers/)
+  * [quay.io](https://quay.io/)
+  * [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
+  * [Google Container Registry](https://cloud.google.com/container-registry/)
 * You can host one yourself, too
 
 ---
