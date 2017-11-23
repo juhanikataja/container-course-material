@@ -14,13 +14,19 @@ find the link to clone this repository on the main page of the repository. Run
 this on the command line to clone the repo:
 
 ```bash
-git clone <repo url>
+git clone --depth=1 https://github.com/Digipalvelutehdas/container-course-material.git
+rm -rf container-course-material/.git
 ```
+
+Note that we are making a shallow clone (`--depth=1`) and removing the .git
+directory. If the .git directory is not removed, this may interfere with some
+exercises due to the way `oc` works: it may confuse the course material
+repository as something to use for builds.
 
 ## Instructions
 
 The exercises are meant to be completed in order, though in some cases you may
-skip exercises. Each exercise list prerequisites that you can look at to see if
+skip exercises. Each exercise lists prerequisites that you can look at to see if
 you've completed the necessary steps to start the exercise.
 
 Both OpenShift and Kubernetes have good documentation that you can refer to

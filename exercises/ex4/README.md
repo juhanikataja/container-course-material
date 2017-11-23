@@ -19,14 +19,20 @@ Kubernetes and OpenShift to help you along.
 Some hints:
 * The official "httpd" image will try to bind port 80 and thus won't work with
   OpenShift.
-* There are Apache images maintained in the Docker Hub that do work with
-  OpenShift.
+* You can look for images in the
+  [Red Hat Container Catalog](https://access.redhat.com/containers/).
+  * Some images here may require a Red Hat subscription
+* The CentOS project also maintains images compatible with OpenShift:
+  [CentOS in the Docker Hub](https://hub.docker.com/u/centos/)
 * The default location where Apache looks for web content is not the same as it
   was with NGINX - you should take this into account when mounting volumes and
-  copying data into the site.
+  copying data into the site. You can find out what path to use by looking at
+  the documentation for the image in whichever registry you choose to use.
 
 ## Relevant documentation
 
+* [Red Hat Container Catalog](https://access.redhat.com/containers/)
+* [CentOS in the Docker Hub](https://hub.docker.com/u/centos/)
 * [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 * [Kubernetes: Persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 * [Kubernetes: Services](https://kubernetes.io/docs/concepts/services-networking/service/)
