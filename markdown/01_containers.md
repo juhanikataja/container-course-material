@@ -121,6 +121,48 @@ Note:
 
 ---
 
+## Image security considerations
+
+* Image security is still more of a wild west compared to package security with
+  package managers like yum and apt
+* Docker Hub images are not automatically up to date and secure
+* *Anyone* can upload images to Docker Hub
+
+---
+
+## Image source considerations
+
+* There are pros and cons to all image sources
+  * The Red Hat Container Catalog most likely has better images on average than
+    Docker Hub, but of course the selection is more limited
+  * Docker Hub has a very large selection of images - some good, some bad
+* **Image security is not inherently better or worse than package security -
+  it's all about the processes of your package/image provider**
+
+---
+
+## Picking a good image
+
+**Picking a good base image is one of the most important things for good
+container security.**
+<!-- .element: class="fragment" data-fragment-index="0" -->
+
+1. Is there a readymade image from a reputable source?
+<!-- .element: class="fragment" data-fragment-index="1" -->
+  * Docker Hub and RHCC both have security information these days
+  <!-- .element: class="fragment" data-fragment-index="1" -->
+  * Example: NGINX image from Red Hat vs. NGINX image from Docker Hub
+  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+2. If no readymade image available, take a reputable image as a basis and build
+   on top of that using a custom Dockerfile.
+   <!-- .element: class="fragment" data-fragment-index="2" -->
+  * Resist the temptation to pick a readymade image that some random person on
+    the Internet uploaded to Docker Hub!
+    <!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+
 ## Docker commands
 
 **Run** container:
