@@ -44,6 +44,7 @@ as pets. To herd the cattle, we need a management system.
 ## Kubernetes
 
 * Google Container Engine (GKE) implements K8s API
+* Amazon Elastic Container Service (EKS) runs K8s
 * Some notable workloads
   * [GitHub frontend](https://githubengineering.com/kubernetes-at-github/)
   * [Pokémon Go](https://cloudplatform.googleblog.com/2016/09/bringing-Pokemon-GO-to-life-on-Google-Cloud.html)
@@ -56,7 +57,7 @@ as pets. To herd the cattle, we need a management system.
 
 ## Kubernetes
 
-* Currently (Nov 2017) at version 1.8
+* Currently (Dec 2017) at version 1.8
 * Next releases will bring better support for batch workloads
 * Several commercial distributions available from
   * CoreOS, Cisco, Canonical, Red Hat... 
@@ -140,7 +141,7 @@ Note:
 
 ## OpenShift releases
 
-* Currently (Nov 2017) we are on 3.6.1
+* Currently (Dec 2017) 3.7 has just come out
 * Up to 1.5 there was two versioning schemes
   * 3.x for commercial
   * 1.x for Origin
@@ -153,9 +154,38 @@ Note:
 
 ---
 
-## Motivation: SEP
+## K8s basic concepts
 
-* Why container orchestration system instead of XYZ
+* Namespace (and OpenShift Project)
+  * Isolates resources from other namespaces
+  * Services are accessible to Pods in the same namespace
+* Pod
+  * One or more containers and volumes with a common IP
+  * Basic schedulable unit
+* Volume
+  * persistent or temporary filesystem, attached to a Pod
+  
+Note:
+
+Just enough to get people through the WebUI hands on. More in 04.
+
+---
+
+## Usage model comparison
+
+* Supercomputer (Taito, Sisu)
+  * user launches jobs
+  * batch queue system schedules and runs jobs 
+* IaaS cloud (Pouta)
+  * user launches VMs
+  * cloud middleware runs VMs
+  * VMs are managed by user through ssh, ansible, ...
+* Kubernetes (Rahti)
+  * user composes application from containerized building blocks
+  * K8s schedules and runs Pods
+* OpenShift (Rahti)
+  * user points system to a source code repositories
+  * OpenShift builds, schedules and runs application Pods
 
 ---
 
@@ -175,9 +205,8 @@ Note:
 
 ---
 
-## Services and other useful stuff (with demos)
+## OpenShift bonus treats
 
-* Application templates
 * Docker registry
   * accessible from outside
 * WebUI for Docker registry
@@ -187,53 +216,24 @@ Note:
   * no host login required
 * Centralized logging
 
----
+Note:
 
-## Security in OpenShift - infrastructure
-
-* Infra nodes (masters, etcd, lb, glusterfs) do not run user processes
-* User nodes have limited access to infra
-* Masters are the only ones that talk to etcd (state)
+* terminal access to containers is good for security
 
 ---
 
-## Security in OpenShift - isolation
+## Security in OpenShift
 
-* Isolation: based on Linux kernel
-* (ClearContainers: KVM)
-* SELinux contexts per project
-* User ID per project
-  * taken from high range
-  * no overlaps
+* Isolation: based on the Linux kernel
+* User ID per project, taken from high range
+* No root processes in containers
 * Extra process capabilities are dropped
-* No user namespaces yet, thus no (local) root in containers
-* Network: SDN per project
-* Storage: SELinux labeling (for supported storage types)
-
----
-
-## Security in OpenShift - runtime privileges
-
-* Containers can request additional capabilities
-* Accounts can be given rights to use (for example)
-  * host network stack
-  * fixed UIDs
-  * root UID
-* These privileges are abstracted as Security Context Constraints (SCC)
-* In a shared environment, access to these is mostly reserved to system components
-
----
-
-## Security in OpenShift - other aspects
-
-* Container images
-  * Bundled templates use images from Red Hat (RHEL/CentOS) 
-  * Users may run on whatever images they want
-* Developers do not need shell access to the hosts
+* SELinux contexts per project
+* Private network per project
 
 Note:
 
-Do consider twice before using non-official images. 
+* ClearContainers: KVM
 
 ---
 
