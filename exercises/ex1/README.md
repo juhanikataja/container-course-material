@@ -70,7 +70,7 @@ The architecture of the resulting app will look like this:
    **Deployment** you created in an earlier step to change the image. You can list
    your **Deployments** with `oc get deployments`. You can use this image (all you
    need to do is to enter this string in the *image* field of the **Deployment**):
-   `docker-registry.rahti-int.csc.fi/oso-course/openshift-nginx`. If you have
+   `docker.io/rlaurika/openshift-nginx`. If you have
    access to Docker, you can get a Dockerfile for this image by the NGINX folk
    here: [nginxinc/openshift-nginx](https://github.com/nginxinc/openshift-nginx).
    Note that this is by no means something you have to do with every image when
