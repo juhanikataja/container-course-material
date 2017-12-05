@@ -45,6 +45,7 @@ as pets. To herd the cattle, we need a management system.
 
 * Google Container Engine (GKE) implements K8s API
 * Amazon Elastic Container Service (EKS) runs K8s
+* Azure Container Service (AKS) runs K8s
 * Some notable workloads
   * [GitHub frontend](https://githubengineering.com/kubernetes-at-github/)
   * [Pokémon Go](https://cloudplatform.googleblog.com/2016/09/bringing-Pokemon-GO-to-life-on-Google-Cloud.html)
@@ -52,6 +53,10 @@ as pets. To herd the cattle, we need a management system.
 * [kubernetes.io](https://kubernetes.io/)
 
 ![k8s logo](img/kubernetes_logo_helm.png)
+
+Note:
+
+The "K" stands for Kubernetes.
 
 ---
 
@@ -184,7 +189,7 @@ Just enough to get people through the WebUI hands on. More in 04.
   * user composes application from containerized building blocks
   * K8s schedules and runs Pods
 * OpenShift (Rahti)
-  * user points system to a source code repositories
+  * user points system to a source code repository
   * OpenShift builds, schedules and runs application Pods
 
 ---
