@@ -1,103 +1,58 @@
-# Exercise 6 - Creating an app from source code
+# Exercise 6 - Build an app from a Dockerfile
 
 ## Prerequisites
 
-Exercise 0 completed.
+You have logged into OpenShift with the `oc` tool.
 
 ## Learning objectives
 
-* Learn how to use the source-to-image -mechanism to build an application
-  directly from source code
+* How to take an existing Docker project and run it in OpenShift
 
 ## Description
 
-In this exercise we learn how to build an application using only source code. Then 
-we modify the source and update the application. We are letting OpenShift build
-the application containers for us by using the source-to-image (s2i) mechanism.
-
-The application is a small Python web server, based on [Bottle framework](https://bottlepy.org/).
+So far we have looked at how to create your own API objects in OpenShift and how
+these API objects can be compiled into a **Template** for a complete site. The
+goal has been to understand some of the building blocks of a site hosted on
+OpenShift. In this exercise we are going to look at how OpenShift can
+automatically generate these building blocks for you based on a Git repository.
 
 ## Relevant documentation
 
 * [OpenShift Origin: Creating New Applications](https://docs.openshift.org/3.6/dev_guide/application_lifecycle/new_app.html)
+* [OpenShift Origin: How Builds Work](https://docs.openshift.org/3.6/dev_guide/builds/index.html)
+* [OpenShift Origin: Builds and Image Streams ](https://docs.openshift.com/container-platform/3.6/architecture/core_concepts/builds_and_image_streams.html)
+* [OpenShift Origin: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
+* [Kubernetes: Replication Controller](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/)
 
 ## Steps
 
-1. Create a project
+1. There is an example application hosted under the Digipalvelutehdas GitHub
+   organisation here:
+   [oso-course-docker-example](https://github.com/Digipalvelutehdas/oso-course-docker-example)
+   Have a look at that repository to see what it contains.
 
-    For this exercise, we want to create a new project so we don't clash with the
-    objects with the same names from the previous exercises:
-    ```bash
-    oc new-project <new project name>
+2. Create a new app in OpenShift based on the repository:
+   ```bash
+   oc new-app https://github.com/Digipalvelutehdas/oso-course-docker-example.git
    ```
-    
-2. Clone the application source code.  
-    
-    Clone a repository with a simple skeleton app by running
-    
-    ```bash
-    git clone https://github.com/tourunen/simple-bottle.git
-    cd simple-bottle
-    ```
-    
-    The source tree should look like this:
-    ```
-    src
-    ├── app.py              # main application, detected by s2i
-    ├── requirements.txt    # python package requirements
-    └── static              # static www content
-        ├── css             # subdirectory for stylesheets
-        │   └── styles.css  # a rather minimal stylesheet
-        └── index.html      # the main page for the application
-    ```
-    
-3. Create and deploy the application
 
-    We first use `oc new-app` to create a bunch of objects for us.  
-    ```bash
-    oc new-app . --context-dir src --name ex6
-    ```
-    
-    We can track the build process by specifying the **BuildConfig** name. The other
-    alternative is to invoke `oc logs` on the build pod directly, but as the
-    **BuildConfig** name does not change from build to build, this is more handy.
-    ```bash
-    oc logs -f bc/simple-bottle
-    ```
+3. Have a look at what API objects were automatically created by OpenShift:
+   ```bash
+   oc get all
+   ```
+   Notice that there are some API object types that we haven't covered yet, like
+   a BuildConfig, an ImageStream and a ReplicationController. You can find more
+   about these API object types under the Relevant documentation section.
 
-    Check all the objects that were created by the single command
-    ```bash
-    oc get all
-    ```
+4. You can get more information about a given API object by specifying
+   `-o yaml`, for example:
+   ```bash
+   oc get dc/oso-course-docker-example -o yaml
+   ```
 
-    We then expose it over HTTPS by creating a **Route**
-     * the type is 'edge', meaning it is TLS terminated by OpenShift's router
-     * we redirect all HTTP traffic to HTTPS port with `--insecure-policy` option.
-    ```bash
-    oc create route edge ex6-route --insecure-policy='Redirect' --service ex6
-    oc get route ex6-route 
-    ```
-    
-    Finally, we can open our app in a browser and check the default page and
-    /healthz -output.
-
-4. Modify the source code and trigger a **Build**.
-
-    Start a build from our local sources:
-    ```bash
-    oc start-build ex6 --from-dir . --follow
-    ```
-
-5. Modify source code and rsync in to the container
-
-## Bonus exercises 
-
-1. Fork the repository in GitHub, create the app from the fork
-
-2. Trigger a build after you push changes to the code in GitHub
-
-3. Setup web hooks to trigger a build
-
-    See [Triggering Builds](https://docs.openshift.org/latest/dev_guide/builds/triggering_builds.html#github-webhooks)
-    in OpenShift developer guide. You can also use the WebUI and navigate to `Builds -> ex6 ->
-    Configuration` to get the WebHook URLs.
+5. OpenShift has not created a **Route** for you yet, so the application is not
+   yet accesible via a web browser. You can create the **Route** yourself based
+   on the examples in the previous exercises or via the web interface. Once
+   you have done that, you should be able to access the site with its familiar
+   content in your favorite browser. Notice that this time the **Service**
+   exposes port 8080 instead of port 80.
