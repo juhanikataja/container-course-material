@@ -223,7 +223,7 @@ Just enough to get people through the WebUI hands on. More in 04.
 
 Note:
 
-* terminal access to containers is good for security
+* Terminal access to containers is good for security
 
 ---
 
@@ -235,6 +235,10 @@ Note:
 * Extra process capabilities are dropped
 * SELinux contexts per project
 * Private network per project
+* More info
+  * [OpenShift multitenancy security](https://docs.openshift.org/latest/security/hosts_multitenancy.html)
+  * [OpenShift runtime security explained](https://developers.redhat.com/blog/2016/10/21/understanding-openshift-security-context-constraints/)
+* Proof of the pudding is in the eating: Red Hat runs multitenant OpenShift
 
 Note:
 
