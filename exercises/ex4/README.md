@@ -1,59 +1,123 @@
-# Exercise 4 - Applying what you've learned so far
+# Exercise 3 - Wrapping API objects into a Template
 
 ## Prerequisites
 
-Completed exercises 0-3.
+Exercises 0-2 completed.
 
 ## Learning objectives
 
-* You are able to apply what you've learned so far about OpenShift to modify
-  an existing site.
+* Encapsulating individual API objects into an application **Template**
 
 ## Description
 
-In this exercise the objective is to take the template from exercise 3 and
-modify it so that instead of NGINX, the site is hosted using Apache. You can
-refer to the previous exercises, other course material and the documentation for
-Kubernetes and OpenShift to help you along.
+> **Disclaimer:** The method we use to add content to our site in this exercise is
+> not something you should do for a real site. Here we simply do it to
+> demonstrate the usage of volumes and the `oc rsync` command in a way that is
+> hopefully easy to understand if you have some familiarity with web servers.
+> For a real site, you should put everything needed to run the site in the
+> container images as part of the build process. Runtime state should be stored
+> on persistent storage. See
+> [The Twelve-Factor App: V. Build, release, run](https://12factor.net/build-release-run).
 
-Some hints:
-* The official "httpd" image will try to bind port 80 and thus won't work with
-  OpenShift.
-* You can look for images in the
-  [Red Hat Container Catalog](https://access.redhat.com/containers/).
-  * Some images here may require a Red Hat subscription
-* The CentOS project also maintains images compatible with OpenShift:
-  [CentOS in the Docker Hub](https://hub.docker.com/u/centos/)
-* The default location where Apache looks for web content is not the same as it
-  was with NGINX - you should take this into account when mounting volumes and
-  copying data into the site. You can find out what path to use by looking at
-  the documentation for the image in whichever registry you choose to use.
+So far we've been creating API objects individually. These API objects have
+constituted an app when put together. Instead of creating API objects one by
+one, there is another way. You can pack things needed to run an app into an
+application **Template**. In this exercise we will learn how to create your own
+templates.
+
+We will deploy the same NGINX application as in the previous two exercises, but
+this time we will create it from a template that contains all the API objects.
+We will also look into making the template configurable so we can launch copies
+of the application with different settings.
+
+The architecture is the same as it is in exercise 2.
 
 ## Relevant documentation
 
-* [Red Hat Container Catalog](https://access.redhat.com/containers/)
-* [CentOS in the Docker Hub](https://hub.docker.com/u/centos/)
-* [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-* [Kubernetes: Persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-* [Kubernetes: Services](https://kubernetes.io/docs/concepts/services-networking/service/)
-* [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
-* [OpenShift: Copying Files to or from a Container](https://docs.openshift.org/latest/dev_guide/copy_files_to_container.html)
 * [OpenShift Origin: Creating New Applications](https://docs.openshift.org/3.6/dev_guide/application_lifecycle/new_app.html)
 
 ## Steps
 
-1. You can use an existing project or create a new one. If you decide to use an
-   existing project, make sure you don't try to create any API objects whose
-   name clashes with objects already in the project.
+1. For this exercise, we want to create a new project so we don't clash with the
+   objects with the same names from the previous exercises:
+   ```bash
+   oc new-project <new project name>
+   ```
 
-2. Make a copy of the **Template** file from the previous exercise and modify it
-   so that it uses Apache instead of NGINX.
+2. Have a look at the `nginx-template.yaml` file in the exercise directory. It
+   contains the API objects from the previous exercises all in one file. The
+   format of the file is like this:
+   ```yaml
+   apiVersion: v1
+   kind: Template
+   metadata:
+     name: template-name
+     annotations: # optional
+       description: "Some description" # optional
+       tags: "tag1,tag2" # optional
+       iconClass: "icon-something" # optional
+   objects:
+     <api objects go here>
+   parameters:
+     <parameters go here>
+   ```
+   Notice that instead of a **Deployment** API object, we are creating a
+   **DeploymentConfig** API object instead. This is to make the template work
+   with the `oc new-app` command. It looks like there is a bug in the command
+   that it doesn't recognize the **Deployment** type yet. **DeploymentConfig**
+   is a native OpenShift type while **Deployment** is a Kubernetes type that is
+   based on OpenShift's **DeploymentConfig** type. The APIs of the two types are
+   very similar.
 
-3. Add the newly modified **Template** to OpenShift.
+3. Create a new **Template** in your project using the `nginx-template.yaml`
+   file:
+   ```bash
+   oc create -f nginx-template.yaml
+   ```
 
-4. Create an Apache site with `oc new-app`.
+4. Have a look at what information you can see on **Templates** when listing
+   them:
+   ```bash
+   oc get templates
+   ```
+   Notice that the **Template** takes four parameters, one of which (the image)
+   does not have a default value and must be specified each time.
 
-5. Upload the `index.html` file from exercise 2 to the new site.
+5. Launch the application from the **Template**:
+   ```bash
+   oc new-app nginx-site -p NGINX_IMAGE=<openshift compatible nginx image>
+   ```
+   You can use the same image as in the previous exercises.
 
-6. You should see the same site as before in your browser, but this time served
-   by Apache instead.
+6. If you look at the status of your **Pods** now, you'll see none of them are
+   ready. This is because the site is missing content as was the case in the
+   previous exercise. If you access the URL of the site, you will get an
+   "Application is not available" error from OpenShift.
+
+7. As in the previous exercise, copy some content into your site:
+   ```bash
+   # Get one of the pods' name
+   oc get pods
+   # Copy over content
+   oc rsync ../ex2/html/ <pod name>:/usr/share/nginx/html/
+   ```
+
+8. Get the URL of the site from the **Route**:
+   ```bash
+   oc get routes
+   ```
+
+9. If you access the site now, you should see the same content as in exercise 2.
+
+10. Other things to try:
+    * See how the items created look like in the web UI
+    * Recreate the app from the web interface:
+       * Delete the current project
+       * Create a new project
+       * In the application catalog, select "Import YAML / JSON"
+       * Click "Browse" and select the **Template** file
+       * Click "Create", select "Save template"
+       * Click "Add to Project"
+       * Find your **Template** under "Uncategorized"
+       * Select the "nginx-site" **Template**
+       * Fill in an image and click "Create"

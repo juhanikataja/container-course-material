@@ -1,141 +1,97 @@
-# Exercise 2 - Adding storage, content and scaling up
+# Exercise 1 - Deploying NGINX
 
 ## Prerequisites
 
-The NGINX instance from exercise 1 is succesfully deployed and accessible via a
-browser.
+* Terminal open with a login session to OpenShift using `oc`
+* Project created and in use (check with `oc status`)
 
 ## Learning objectives
 
-* Creating secure **Routes** to a **Service**
-* Using persistent storage via **PersistentVolumeClaim** with **Pods**
-* Scaling up **Deployments**
+* Basic command line usage
+  * Creating API objects
+  * Getting information about existing API objects
+  * Updating existing API objects
+* Security restrictions related to OpenShift containers compared to plain Docker
+  containers
 
 ## Description
 
-> **Disclaimer:** The method we use to add content to our site in this exercise is
-> not something you should do for a real site. Here we simply do it to
-> demonstrate the usage of volumes and the `oc rsync` command in a way that is
-> hopefully easy to understand if you have some familiarity with web servers.
-> For a real site, you should put everything needed to run the site in the
-> container images as part of the build process. Runtime state should be stored
-> on persistent storage. See
-> [The Twelve-Factor App: V. Build, release, run](https://12factor.net/build-release-run).
-
-Now that we have a basic NGINX web server installation, we should look into
-serving some content. We will look at storing data for our website on a
-**PersistentVolume** that we will attach to our **Pods**. Since we will have
-some real content now, we should make sure the **Route** to our web site is
-secure. We will also see how to scale up our site to prepare for more visitors.
+The exercise directory contains a set of YAML files that describe a very simple
+stateless deployment of NGINX. You can have a look at them with your favorite
+editor to see what they contain. We will use these files to set up NGINX and see
+that we can access the newly create NGINX application via a web browser.
 
 The architecture of the resulting app will look like this:
 
-![Exercise 2 architecture](ex2-arch.png)
+![Exercise 1 architecture](ex1-arch.png)
 
 ## Relevant documentation
 
 * [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-* [Kubernetes: Persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 * [Kubernetes: Services](https://kubernetes.io/docs/concepts/services-networking/service/)
 * [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
-* [OpenShift: Copying Files to or from a Container](https://docs.openshift.org/latest/dev_guide/copy_files_to_container.html)
 
 ## Steps
 
-1. Before we add our content, let's first make the **Route** to NGINX secured by
-   TLS. You can replace (`oc replace`) your existing **Route** using the
-   `nginx-tls-route.yaml` file found in the directory for this exercise. You can
-   compare the new **Route** definition with the old one to see what's changed:
+1. Create a new NGINX **Deployment** using the nginx-deployment.yaml file:
    ```bash
-   diff -u ex1/nginx-route.yaml ex2/nginx-tls-route.yaml
+   oc create -f nginx-deployment.yaml
+   ```
+   This is going to create a **ReplicaSet** with two **Pods** that run NGINX.
+
+2. Create a **Service** for the **Deployment**:
+   ```bash
+   oc create -f nginx-service.yaml
+   ```
+   This will create a stable IP and DNS name for the **Pods** in the
+   **Deployment**.
+
+3. Create a **Route** to the newly created **Service**:
+   ```bash
+   oc create -f nginx-route.yaml
+   ```
+   This will create a URL in the app domain where the NGINX app is reachable.
+
+4. Inspect the status of the **Pods** created by the **Deployment**:
+   ```bash
+   oc get pods
+   ```
+   Notice that the **Pods** are not working correctly. This is because of
+   security restrictions in OpenShift that enable it to be a multi-tenant cloud
+   platform. You can get more information about why a **Pod** is not working
+   correctly with the `oc logs` command:
+   ```bash
+   oc logs <name of a pod>
    ```
 
-2. If you access the URL from the **Route** again, you'll be redirected to a
-   secure version of the NGINX site. Have a look at the certificate information
-   in your browser to get a clue into how this is implemented.
+5. You will need to replace the NGINX image with one that is compatible with
+   OpenShift. You can use either `oc edit deployment <deployment name>` or `oc
+   replace -f <modified deployment yaml>` to achieve this. Modify the
+   **Deployment** you created in an earlier step to change the image. You can list
+   your **Deployments** with `oc get deployments`. You can use this image (all you
+   need to do is to enter this string in the *image* field of the **Deployment**):
+   `docker.io/rlaurika/openshift-nginx`. If you have
+   access to Docker, you can get a Dockerfile for this image by the NGINX folk
+   here: [nginxinc/openshift-nginx](https://github.com/nginxinc/openshift-nginx).
+   Note that this is by no means something you have to do with every image when
+   using OpenShift, but it's good to be aware that some images do require some
+   changes.
 
-3. Create a **PersistentVolumeClaim** using the `web-content-pvc.yaml` file:
-   ```bash
-   oc create -f web-content-pvc.yaml
-   ```
-   Notice the "ReadWriteMany" access mode. This makes it possible to attach the
-   same volume to multiple **Pods** at the same time. If the access mode was
-   "ReadWriteOnce" instead, the volume would only be attachable to one **Pod**
-   at a time. The supported access modes depend on the underlying storage. For
-   this exercise, the underlying storage needs to support "ReadWriteMany".
+6. Inspect the status of the **Pods** once more. They should end up in the
+   "Running" state after a small wait.
 
-4. Watch the **PersistentVolumeClaim** listing to see when the new claim enters
-   the **Bound** state and is ready for use (the handy -w flag can be used with
-   other commands as well):
-   ```bash
-   oc get pvc -w
-   ```
+7. The default NGINX image uses port 80 by default, but the one for OpenShift
+   uses 8080 instead, so you will need to change the port exposed by the **Pods**
+   in the **Deployment** (adjust the *containerPort* setting). The *targetPort*
+   setting in the **Service** references the port in the **Pods** by name, so it
+   does not need to be updated. If you ever do need to modify a **Service**, note
+   that they are immutable, so you cannot use `oc edit` or `oc replace -f`. You
+   need to use `oc replace --force -f`. This deletes and recreates the **Service**.
 
-5. Update the NGINX **Deployment** to attach the newly created volume to the
-   **Pods**. Let's use `oc patch` this time to see how that works:
-   ```bash
-   oc patch deployment nginx-deployment -p "$(cat nginx-deployment-persistent.yaml)"
-   ```
-   This will amend the existing **Deployment** so that storage is added to each
-   **Pod**. It will only touch the parts of the API object that are relevant.
-
-6. If you look at the NGINX URL now, you should see "403 Forbidden" since there
-   is no index page and directory listings are not allowed. This is because we
-   have just replaced the content of the default html directory with an empty
-   volume.
-
-7. Hang on, we got an error from our site. All our **Pods** are in a bad state,
-   yet if you run `oc get pods` they all seem to be running normally. This is
-   because we have not defined a *livenessProbe* and a *readinessProbe* for the
-   **Pods**. Let's do that next, starting with a *livenessProbe*:
-   ```bash
-   oc patch deployment nginx-deployment -p "$(cat nginx-livenessprobe.yaml)"
-   ```
-   Here we define a check to see if someone is answering to TCP connections in
-   the port configured in the *containerPort* setting of the **Pod**.
-
-8. If you look at the output of `oc get pods` now, you'll see the **Pods** are
-   still reported as running normally. This is because the *livenessProbe* only
-   checks to see if it can access the web server at all. To know if the web
-   server is ready to serve traffic, we also need a *readinessProbe*:
-   ```bash
-   oc patch deployment nginx-deployment -p "$(cat nginx-readinessprobe.yaml)"
-   ```
-   Here we define an HTTP check that expects an HTTP status code between 200
-   (inclusive) and 400 (exclusive).
-
-9. After applying the *readinessProbe*, run `oc get pods -w` to watch a new
-   deploy take place. You will see that a new **Pod** is created, but it is
-   marked as not ready ("READY 0/1"). This is the *readinessProbe* doing its
-   job. Let's add some content that will make the web server report a non-error
-   status code so that the *readinessProbe* succeeds.
-
-10. Deploy your fancy new website using `oc rsync` on one of the **Pods** using
-    content from the html subdirectory of the exercise directory:
+8. If all went well, you should now be able to access NGINX. Check the address
+    from the **Route** you created in an earlier step:
     ```bash
-    # Get a name for one of the Pods
-    oc get pods
-    # Copy over the html/ dir to the Pod
-    oc rsync html/ <pod name>:/usr/share/nginx/html/
-    # Now look at the status of your pods
-    oc get pods -w
+    oc get route nginx-route
     ```
-
-11. You should now have some content that was very expensive to create on your
-    web page!
-
-12. This new content is sure to bring hordes of interested visitors to the site,
-    so let's scale up the **Deployment** to accommodate for the increased
-    traffic:
-    ```bash
-    oc scale --replicas=4 deployment nginx-deployment
-    ```
-    After running this, there will be four **Pods** running instead of two.
-
-13. Finally, have a look at what the **Deployment** looks like now after all
-    these additions:
-    ```bash
-    oc get deployment nginx-deployment -o yaml
-    ```
-    You should see the storage and the probes you added. You should also see
-    that the size of the **ReplicaSet** is now four.
+    If you access the URL listed under HOST/PORT in your browser, you should see
+    the text "Welcome to nginx!"

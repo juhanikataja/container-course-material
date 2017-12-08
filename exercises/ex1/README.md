@@ -1,97 +1,103 @@
-# Exercise 1 - Deploying NGINX
+# Exercise 6 - Creating an app from source code
 
 ## Prerequisites
 
-* Terminal open with a login session to OpenShift using `oc`
-* Project created and in use (check with `oc status`)
+Exercise 0 completed.
 
 ## Learning objectives
 
-* Basic command line usage
-  * Creating API objects
-  * Getting information about existing API objects
-  * Updating existing API objects
-* Security restrictions related to OpenShift containers compared to plain Docker
-  containers
+* Learn how to use the source-to-image -mechanism to build an application
+  directly from source code
 
 ## Description
 
-The exercise directory contains a set of YAML files that describe a very simple
-stateless deployment of NGINX. You can have a look at them with your favorite
-editor to see what they contain. We will use these files to set up NGINX and see
-that we can access the newly create NGINX application via a web browser.
+In this exercise we learn how to build an application using only source code. Then 
+we modify the source and update the application. We are letting OpenShift build
+the application containers for us by using the source-to-image (s2i) mechanism.
 
-The architecture of the resulting app will look like this:
-
-![Exercise 1 architecture](ex1-arch.png)
+The application is a small Python web server, based on [Bottle framework](https://bottlepy.org/).
 
 ## Relevant documentation
 
-* [Kubernetes: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-* [Kubernetes: Services](https://kubernetes.io/docs/concepts/services-networking/service/)
-* [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
+* [OpenShift Origin: Creating New Applications](https://docs.openshift.org/3.6/dev_guide/application_lifecycle/new_app.html)
 
 ## Steps
 
-1. Create a new NGINX **Deployment** using the nginx-deployment.yaml file:
-   ```bash
-   oc create -f nginx-deployment.yaml
-   ```
-   This is going to create a **ReplicaSet** with two **Pods** that run NGINX.
+1. Create a project
 
-2. Create a **Service** for the **Deployment**:
-   ```bash
-   oc create -f nginx-service.yaml
-   ```
-   This will create a stable IP and DNS name for the **Pods** in the
-   **Deployment**.
-
-3. Create a **Route** to the newly created **Service**:
-   ```bash
-   oc create -f nginx-route.yaml
-   ```
-   This will create a URL in the app domain where the NGINX app is reachable.
-
-4. Inspect the status of the **Pods** created by the **Deployment**:
-   ```bash
-   oc get pods
-   ```
-   Notice that the **Pods** are not working correctly. This is because of
-   security restrictions in OpenShift that enable it to be a multi-tenant cloud
-   platform. You can get more information about why a **Pod** is not working
-   correctly with the `oc logs` command:
-   ```bash
-   oc logs <name of a pod>
-   ```
-
-5. You will need to replace the NGINX image with one that is compatible with
-   OpenShift. You can use either `oc edit deployment <deployment name>` or `oc
-   replace -f <modified deployment yaml>` to achieve this. Modify the
-   **Deployment** you created in an earlier step to change the image. You can list
-   your **Deployments** with `oc get deployments`. You can use this image (all you
-   need to do is to enter this string in the *image* field of the **Deployment**):
-   `docker.io/rlaurika/openshift-nginx`. If you have
-   access to Docker, you can get a Dockerfile for this image by the NGINX folk
-   here: [nginxinc/openshift-nginx](https://github.com/nginxinc/openshift-nginx).
-   Note that this is by no means something you have to do with every image when
-   using OpenShift, but it's good to be aware that some images do require some
-   changes.
-
-6. Inspect the status of the **Pods** once more. They should end up in the
-   "Running" state after a small wait.
-
-7. The default NGINX image uses port 80 by default, but the one for OpenShift
-   uses 8080 instead, so you will need to change the port exposed by the **Pods**
-   in the **Deployment** (adjust the *containerPort* setting). The *targetPort*
-   setting in the **Service** references the port in the **Pods** by name, so it
-   does not need to be updated. If you ever do need to modify a **Service**, note
-   that they are immutable, so you cannot use `oc edit` or `oc replace -f`. You
-   need to use `oc replace --force -f`. This deletes and recreates the **Service**.
-
-8. If all went well, you should now be able to access NGINX. Check the address
-    from the **Route** you created in an earlier step:
+    For this exercise, we want to create a new project so we don't clash with the
+    objects with the same names from the previous exercises:
     ```bash
-    oc get route nginx-route
+    oc new-project <new project name>
+   ```
+    
+2. Clone the application source code.  
+    
+    Clone a repository with a simple skeleton app by running
+    
+    ```bash
+    git clone https://github.com/tourunen/simple-bottle.git
+    cd simple-bottle
     ```
-    If you access the URL listed under HOST/PORT in your browser, you should see
-    the text "Welcome to nginx!"
+    
+    The source tree should look like this:
+    ```
+    src
+    ├── app.py              # main application, detected by s2i
+    ├── requirements.txt    # python package requirements
+    └── static              # static www content
+        ├── css             # subdirectory for stylesheets
+        │   └── styles.css  # a rather minimal stylesheet
+        └── index.html      # the main page for the application
+    ```
+    
+3. Create and deploy the application
+
+    We first use `oc new-app` to create a bunch of objects for us.  
+    ```bash
+    oc new-app . --context-dir src --name ex6
+    ```
+    
+    We can track the build process by specifying the **BuildConfig** name. The other
+    alternative is to invoke `oc logs` on the build pod directly, but as the
+    **BuildConfig** name does not change from build to build, this is more handy.
+    ```bash
+    oc logs -f bc/simple-bottle
+    ```
+
+    Check all the objects that were created by the single command
+    ```bash
+    oc get all
+    ```
+
+    We then expose it over HTTPS by creating a **Route**
+     * the type is 'edge', meaning it is TLS terminated by OpenShift's router
+     * we redirect all HTTP traffic to HTTPS port with `--insecure-policy` option.
+    ```bash
+    oc create route edge ex6-route --insecure-policy='Redirect' --service ex6
+    oc get route ex6-route 
+    ```
+    
+    Finally, we can open our app in a browser and check the default page and
+    /healthz -output.
+
+4. Modify the source code and trigger a **Build**.
+
+    Start a build from our local sources:
+    ```bash
+    oc start-build ex6 --from-dir . --follow
+    ```
+
+5. Modify source code and rsync in to the container
+
+## Bonus exercises 
+
+1. Fork the repository in GitHub, create the app from the fork
+
+2. Trigger a build after you push changes to the code in GitHub
+
+3. Setup web hooks to trigger a build
+
+    See [Triggering Builds](https://docs.openshift.org/latest/dev_guide/builds/triggering_builds.html#github-webhooks)
+    in OpenShift developer guide. You can also use the WebUI and navigate to `Builds -> ex6 ->
+    Configuration` to get the WebHook URLs.
