@@ -1,8 +1,8 @@
-# Exercise 2 - Adding storage, content and scaling up
+# Exercise 3 - Adding storage, content and scaling up
 
 ## Prerequisites
 
-The NGINX instance from exercise 1 is succesfully deployed and accessible via a
+The NGINX instance from exercise 2 is succesfully deployed and accessible via a
 browser.
 
 ## Learning objectives
@@ -30,7 +30,7 @@ secure. We will also see how to scale up our site to prepare for more visitors.
 
 The architecture of the resulting app will look like this:
 
-![Exercise 2 architecture](ex2-arch.png)
+![Exercise 3 architecture](ex3-arch.png)
 
 ## Relevant documentation
 
@@ -47,7 +47,7 @@ The architecture of the resulting app will look like this:
    `nginx-tls-route.yaml` file found in the directory for this exercise. You can
    compare the new **Route** definition with the old one to see what's changed:
    ```bash
-   diff -u ex1/nginx-route.yaml ex2/nginx-tls-route.yaml
+   diff -u ex2/nginx-route.yaml ex3/nginx-tls-route.yaml
    ```
 
 2. If you access the URL from the **Route** again, you'll be redirected to a

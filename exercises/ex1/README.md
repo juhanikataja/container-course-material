@@ -1,4 +1,4 @@
-# Exercise 6 - Creating an app from source code
+# Exercise 1 - Creating an app from source code
 
 ## Prerequisites
 
@@ -20,13 +20,14 @@ The application is a small Python web server, based on [Bottle framework](https:
 ## Relevant documentation
 
 * [OpenShift Origin: Creating New Applications](https://docs.openshift.org/3.6/dev_guide/application_lifecycle/new_app.html)
+* [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
 
 ## Steps
 
 1. Create a project
 
     For this exercise, we want to create a new project so we don't clash with the
-    objects with the same names from the previous exercises:
+    objects from other exercises:
     ```bash
     oc new-project <new project name>
    ```
@@ -55,14 +56,14 @@ The application is a small Python web server, based on [Bottle framework](https:
 
     We first use `oc new-app` to create a bunch of objects for us.  
     ```bash
-    oc new-app . --context-dir src --name ex6
+    oc new-app . --context-dir src --name ex1
     ```
     
     We can track the build process by specifying the **BuildConfig** name. The other
     alternative is to invoke `oc logs` on the build pod directly, but as the
     **BuildConfig** name does not change from build to build, this is more handy.
     ```bash
-    oc logs -f bc/simple-bottle
+    oc logs -f bc/ex1
     ```
 
     Check all the objects that were created by the single command
@@ -74,23 +75,24 @@ The application is a small Python web server, based on [Bottle framework](https:
      * the type is 'edge', meaning it is TLS terminated by OpenShift's router
      * we redirect all HTTP traffic to HTTPS port with `--insecure-policy` option.
     ```bash
-    oc create route edge ex6-route --insecure-policy='Redirect' --service ex6
-    oc get route ex6-route 
+    oc create route edge ex1-route --insecure-policy='Redirect' --service ex1
+    oc get route ex1-route
     ```
     
     Finally, we can open our app in a browser and check the default page and
     /healthz -output.
 
 4. Modify the source code and trigger a **Build**.
-
-    Start a build from our local sources:
+    Edit app.py or index.html to your liking, then start a build from our local sources:
     ```bash
-    oc start-build ex6 --from-dir . --follow
+    oc start-build ex1 --from-dir . --follow
     ```
+    Check that the changes are visible in browser.
 
-5. Modify source code and rsync in to the container
+## Bonus exercises
 
-## Bonus exercises 
+When you have completed the other exercises, you can optionally continue with
+these:
 
 1. Fork the repository in GitHub, create the app from the fork
 
@@ -99,5 +101,5 @@ The application is a small Python web server, based on [Bottle framework](https:
 3. Setup web hooks to trigger a build
 
     See [Triggering Builds](https://docs.openshift.org/latest/dev_guide/builds/triggering_builds.html#github-webhooks)
-    in OpenShift developer guide. You can also use the WebUI and navigate to `Builds -> ex6 ->
+    in OpenShift developer guide. You can also use the WebUI and navigate to `Builds -> ex1 ->
     Configuration` to get the WebHook URLs.

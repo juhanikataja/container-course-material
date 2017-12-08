@@ -1,8 +1,8 @@
-# Exercise 4 - Applying what you've learned so far
+# Exercise 5 - Applying what you've learned so far
 
 ## Prerequisites
 
-Completed exercises 0-3.
+Completed exercises 0-4.
 
 ## Learning objectives
 
@@ -11,7 +11,7 @@ Completed exercises 0-3.
 
 ## Description
 
-In this exercise the objective is to take the template from exercise 3 and
+In this exercise the objective is to take the template from exercise 4 and
 modify it so that instead of NGINX, the site is hosted using Apache. You can
 refer to the previous exercises, other course material and the documentation for
 Kubernetes and OpenShift to help you along.
@@ -28,6 +28,8 @@ Some hints:
   was with NGINX - you should take this into account when mounting volumes and
   copying data into the site. You can find out what path to use by looking at
   the documentation for the image in whichever registry you choose to use.
+* Use `oc rsh` and `oc debug` to log in to the running or dead containers and
+  inspect how the volume mounts look like inside the container.
 
 ## Relevant documentation
 
@@ -53,7 +55,7 @@ Some hints:
 
 4. Create an Apache site with `oc new-app`.
 
-5. Upload the `index.html` file from exercise 2 to the new site.
+5. Upload the `index.html` file from exercise 3 to the new site.
 
 6. You should see the same site as before in your browser, but this time served
    by Apache instead.

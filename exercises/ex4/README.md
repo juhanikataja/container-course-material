@@ -1,8 +1,8 @@
-# Exercise 3 - Wrapping API objects into a Template
+# Exercise 4 - Wrapping API objects into a Template
 
 ## Prerequisites
 
-Exercises 0-2 completed.
+Exercises 0-3 completed.
 
 ## Learning objectives
 
@@ -30,7 +30,7 @@ this time we will create it from a template that contains all the API objects.
 We will also look into making the template configurable so we can launch copies
 of the application with different settings.
 
-The architecture is the same as it is in exercise 2.
+The architecture is the same as it is in exercise 3.
 
 ## Relevant documentation
 
@@ -99,7 +99,7 @@ The architecture is the same as it is in exercise 2.
    # Get one of the pods' name
    oc get pods
    # Copy over content
-   oc rsync ../ex2/html/ <pod name>:/usr/share/nginx/html/
+   oc rsync ../ex3/html/ <pod name>:/usr/share/nginx/html/
    ```
 
 8. Get the URL of the site from the **Route**:

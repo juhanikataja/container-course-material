@@ -1,4 +1,4 @@
-# Exercise 1 - Deploying NGINX
+# Exercise 2 - Deploying NGINX
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ that we can access the newly create NGINX application via a web browser.
 
 The architecture of the resulting app will look like this:
 
-![Exercise 1 architecture](ex1-arch.png)
+![Exercise 2 architecture](ex2-arch.png)
 
 ## Relevant documentation
 
@@ -71,7 +71,7 @@ The architecture of the resulting app will look like this:
    your **Deployments** with `oc get deployments`. You can use this image (all you
    need to do is to enter this string in the *image* field of the **Deployment**):
    `docker.io/rlaurika/openshift-nginx`. If you have
-   access to Docker, you can get a Dockerfile for this image by the NGINX folk
+   access to Docker, you can get a Dockerfile for this image by the NGINX folks
    here: [nginxinc/openshift-nginx](https://github.com/nginxinc/openshift-nginx).
    Note that this is by no means something you have to do with every image when
    using OpenShift, but it's good to be aware that some images do require some

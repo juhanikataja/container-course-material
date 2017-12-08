@@ -1,4 +1,4 @@
-# Exercise 5 - Build an app from a Dockerfile
+# Exercise 6 - Build an app from a Dockerfile
 
 ## Prerequisites
 
