@@ -20,7 +20,8 @@ The application is a small Python web server, based on [Bottle framework](https:
 ## Relevant documentation
 
 * [OpenShift Origin: Creating New Applications](https://docs.openshift.org/3.6/dev_guide/application_lifecycle/new_app.html)
-* [OpenShift: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
+* [OpenShift Origin: Source-to-image builds](https://docs.openshift.org/3.6/architecture/core_concepts/builds_and_image_streams.html#source-build)
+* [OpenShift Origin: Routes](https://docs.openshift.org/3.6/architecture/networking/routes.html)
 
 ## Steps
 
