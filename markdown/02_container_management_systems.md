@@ -45,7 +45,7 @@ as pets. To herd the cattle, we need a management system.
 
 * Google Container Engine (GKE) implements K8s API
 * Amazon Elastic Container Service (EKS) runs K8s
-* Azure Container Service (AKS) runs K8s
+* Microsoft Azure Container Service (AKS) runs K8s
 * Some notable workloads
   * [GitHub frontend](https://githubengineering.com/kubernetes-at-github/)
   * [Pokémon Go](https://cloudplatform.googleblog.com/2016/09/bringing-Pokemon-GO-to-life-on-Google-Cloud.html)
