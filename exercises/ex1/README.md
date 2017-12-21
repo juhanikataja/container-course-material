@@ -71,6 +71,11 @@ The application is a small Python web server, based on [Bottle framework](https:
     ```bash
     oc get all
     ```
+    
+    We can also list all the events that were triggered.
+    ```bash
+    oc get events
+    ```
 
     We then expose it over HTTPS by creating a **Route**
      * the type is 'edge', meaning it is TLS terminated by OpenShift's router

@@ -10,7 +10,8 @@
 2. Find the Rocket.Chat template in the app catalog (it is under the JS group)
 3. Select the Rocket.Chat template and click Create
 4. While the app is launching, you can explore the project view and see what has been created there
-5. Find the link to the application on the overview page once the app is running
+5. Click "Monitoring -> Events - View details" on the upper right corner to see how the deployment is progressing
+6. Find the link to the application on the overview page once the app is running
 
 ---
 
